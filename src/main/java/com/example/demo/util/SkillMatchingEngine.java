@@ -8,21 +8,35 @@ import org.springframework.stereotype.Component;
 @Component
 public class SkillMatchingEngine {
 
+    /**
+     * Calculate a match score between a SkillOffer and SkillRequest.
+     * You can customize scoring logic based on skill name, experience level, user rating, etc.
+     */
     public double calculateMatchScore(SkillOffer offer, SkillRequest request) {
         double score = 0.0;
 
-        // Example simple scoring logic
+        // Example: exact skill name match
         if (offer.getSkillName().equalsIgnoreCase(request.getSkillName())) {
             score += 50;
         }
 
-        if (offer.getExperienceLevel() >= request.getRequiredLevel()) {
-            score += 30;
+        // Experience/level match (example: simple numeric comparison)
+        try {
+            int offerLevel = Integer.parseInt(offer.getExperienceLevel());
+            int requestLevel = Integer.parseInt(request.getRequiredLevel());
+            if (offerLevel >= requestLevel) {
+                score += 30;
+            } else {
+                score += (30 * offerLevel / (double) requestLevel);
+            }
+        } catch (NumberFormatException e) {
+            // fallback: ignore numeric parsing errors
         }
 
+        // Add user rating contribution
         User offerUser = offer.getUser();
-        if (offerUser != null) {
-            score += offerUser.getRating(); // Add rating to score
+        if (offerUser != null && offerUser.getRating() != null) {
+            score += offerUser.getRating();
         }
 
         return score;
