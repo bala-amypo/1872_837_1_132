@@ -11,19 +11,20 @@ public class SkillMatchingEngine {
     public double calculateMatchScore(SkillOffer offer, SkillRequest request) {
         double score = 0.0;
 
+        // Example simple scoring logic
         if (offer.getSkillName().equalsIgnoreCase(request.getSkillName())) {
-            score += 40;
+            score += 50;
         }
 
-        if (offer.getExperienceLevel().equalsIgnoreCase(request.getRequiredLevel())) {
+        if (offer.getExperienceLevel() >= request.getRequiredLevel()) {
             score += 30;
         }
 
         User offerUser = offer.getUser();
-        if (offerUser != null && offerUser.getRating() != null) {
-            score += Math.min(offerUser.getRating() * 6, 30);
+        if (offerUser != null) {
+            score += offerUser.getRating(); // Add rating to score
         }
 
-        return Math.min(score, 100.0);
+        return score;
     }
 }

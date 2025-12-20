@@ -1,6 +1,5 @@
 package com.example.barter.service.impl;
 
-import com.example.barter.exception.BadRequestException;
 import com.example.barter.exception.ResourceNotFoundException;
 import com.example.barter.model.User;
 import com.example.barter.repository.UserRepository;
@@ -8,14 +7,15 @@ import com.example.barter.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository,
-                           PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -23,9 +23,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User register(User user) {
         if (userRepository.existsByEmail(user.getEmail())) {
-            throw new BadRequestException("Email already in use");
+            throw new IllegalArgumentException("Email already in use");
         }
-
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
@@ -47,5 +46,10 @@ public class UserServiceImpl implements UserService {
         User user = getById(userId);
         user.setRating(newRating);
         return userRepository.save(user);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }

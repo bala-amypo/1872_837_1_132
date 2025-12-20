@@ -28,8 +28,7 @@ public class SkillCategory {
     @OneToMany(mappedBy = "skillCategory")
     private List<SkillRequest> skillRequests;
 
-    public SkillCategory() {
-    }
+    public SkillCategory() {}
 
     public SkillCategory(String categoryName, String description) {
         this.categoryName = categoryName;
@@ -41,5 +40,15 @@ public class SkillCategory {
         this.createdAt = LocalDateTime.now();
     }
 
-    // getters and setters
+    // Getters & Setters
+    public Long getId() { return id; }
+    public String getCategoryName() { return categoryName; }
+    public void setCategoryName(String categoryName) { this.categoryName = categoryName; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public List<SkillOffer> getSkillOffers() { return skillOffers; }
+    public void setSkillOffers(List<SkillOffer> skillOffers) { this.skillOffers = skillOffers; }
+    public List<SkillRequest> getSkillRequests() { return skillRequests; }
+    public void setSkillRequests(List<SkillRequest> skillRequests) { this.skillRequests = skillRequests; }
 }

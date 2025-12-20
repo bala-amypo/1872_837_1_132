@@ -27,34 +27,49 @@ public class SkillOffer {
     private String description;
 
     @Column(nullable = false)
-    private String experienceLevel;
+    private String experienceLevel; // BEGINNER/INTERMEDIATE/EXPERT
 
     @Column(nullable = false)
-    private String availability = "AVAILABLE";
+    private String availability = "AVAILABLE"; // AVAILABLE/UNAVAILABLE
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "offer")
-    private List<SkillMatch> matches;
+    private List<SkillMatch> skillMatches;
 
-    public SkillOffer() {
-    }
+    public SkillOffer() {}
 
-    public SkillOffer(User user, SkillCategory skillCategory, String skillName, String experienceLevel) {
+    public SkillOffer(User user, SkillCategory skillCategory, String skillName, String description,
+                      String experienceLevel, String availability) {
         this.user = user;
         this.skillCategory = skillCategory;
         this.skillName = skillName;
+        this.description = description;
         this.experienceLevel = experienceLevel;
+        this.availability = availability;
     }
 
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
-        if (this.availability == null) {
-            this.availability = "AVAILABLE";
-        }
     }
 
-    // getters and setters
+    // Getters & Setters
+    public Long getId() { return id; }
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
+    public SkillCategory getSkillCategory() { return skillCategory; }
+    public void setSkillCategory(SkillCategory skillCategory) { this.skillCategory = skillCategory; }
+    public String getSkillName() { return skillName; }
+    public void setSkillName(String skillName) { this.skillName = skillName; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    public String getExperienceLevel() { return experienceLevel; }
+    public void setExperienceLevel(String experienceLevel) { this.experienceLevel = experienceLevel; }
+    public String getAvailability() { return availability; }
+    public void setAvailability(String availability) { this.availability = availability; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public List<SkillMatch> getSkillMatches() { return skillMatches; }
+    public void setSkillMatches(List<SkillMatch> skillMatches) { this.skillMatches = skillMatches; }
 }

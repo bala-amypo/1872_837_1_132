@@ -49,6 +49,11 @@ public class SkillOfferServiceImpl implements SkillOfferService {
     public List<SkillOffer> getOffersByCategory(Long categoryId) {
         return offerRepository.findBySkillCategoryId(categoryId);
     }
+    @Override
+public List<SkillOffer> getAllOffers() {
+    return offerRepository.findAll();
+}
+
 
     @Override
     public List<SkillOffer> getAvailableOffers() {

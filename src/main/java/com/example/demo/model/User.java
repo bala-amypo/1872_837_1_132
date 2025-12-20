@@ -43,8 +43,7 @@ public class User {
     @OneToMany(mappedBy = "matchedBy")
     private List<SkillMatch> skillMatches;
 
-    public User() {
-    }
+    public User() {}
 
     public User(String fullName, String email, String password, String role) {
         this.fullName = fullName;
@@ -56,13 +55,29 @@ public class User {
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
-        if (this.rating == null) {
-            this.rating = 0.0;
-        }
-        if (this.role == null) {
-            this.role = "USER";
-        }
+        if (this.rating == null) this.rating = 0.0;
+        if (this.role == null) this.role = "USER";
     }
 
-    // getters and setters
+    // Getters and Setters
+    public Long getId() { return id; }
+    public String getFullName() { return fullName; }
+    public void setFullName(String fullName) { this.fullName = fullName; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
+    public Double getRating() { return rating; }
+    public void setRating(Double rating) { this.rating = rating; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public List<SkillOffer> getSkillOffers() { return skillOffers; }
+    public void setSkillOffers(List<SkillOffer> skillOffers) { this.skillOffers = skillOffers; }
+    public List<SkillRequest> getSkillRequests() { return skillRequests; }
+    public void setSkillRequests(List<SkillRequest> skillRequests) { this.skillRequests = skillRequests; }
+    public List<SkillMatch> getSkillMatches() { return skillMatches; }
+    public void setSkillMatches(List<SkillMatch> skillMatches) { this.skillMatches = skillMatches; }
 }

@@ -1,5 +1,6 @@
 package com.example.barter.service.impl;
 
+import com.example.barter.exception.BadRequestException;
 import com.example.barter.exception.ResourceNotFoundException;
 import com.example.barter.model.BarterTransaction;
 import com.example.barter.model.SkillMatch;
@@ -28,7 +29,13 @@ public class TransactionServiceImpl implements TransactionService {
         SkillMatch match = matchRepository.findById(matchId)
                 .orElseThrow(() -> new ResourceNotFoundException("Match not found"));
 
-        BarterTransaction transaction = new BarterTransaction(match);
+        if (!"ACCEPTED".equalsIgnoreCase(match.getMatchStatus())) {
+            throw new BadRequestException("Match must be ACCEPTED to create transaction");
+        }
+
+        BarterTransaction transaction = new BarterTransaction();
+        transaction.setMatch(match);
+        transaction.setStatus("INITIATED");  // ensures method exists in BarterTransaction
         return transactionRepository.save(transaction);
     }
 
@@ -44,10 +51,14 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public BarterTransaction completeTransaction(Long transactionId,
-                                                 Integer offererRating,
-                                                 Integer requesterRating) {
+    public BarterTransaction completeTransaction(Long transactionId, Integer offererRating, Integer requesterRating) {
         BarterTransaction transaction = getTransaction(transactionId);
+
+        if ((offererRating != null && (offererRating < 1 || offererRating > 5)) ||
+            (requesterRating != null && (requesterRating < 1 || requesterRating > 5))) {
+            throw new BadRequestException("Ratings must be between 1 and 5");
+        }
+
         transaction.setOffererRating(offererRating);
         transaction.setRequesterRating(requesterRating);
         transaction.setStatus("COMPLETED");
