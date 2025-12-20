@@ -4,7 +4,7 @@ import com.example.barter.exception.ResourceNotFoundException;
 import com.example.barter.model.*;
 import com.example.barter.repository.*;
 import com.example.barter.service.MatchService;
-// import com.example.barter.util.SkillMatchingEngine;
+import com.example.barter.util.SkillMatchingEngine;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,20 +16,24 @@ public class MatchServiceImpl implements MatchService {
     private final SkillOfferRepository offerRepository;
     private final SkillRequestRepository requestRepository;
     private final UserRepository userRepository;
+    private final SkillMatchingEngine matchingEngine;
 
     public MatchServiceImpl(SkillMatchRepository matchRepository,
                             SkillOfferRepository offerRepository,
                             SkillRequestRepository requestRepository,
                             UserRepository userRepository,
-                            ) {
+                            SkillMatchingEngine matchingEngine) {
+
         this.matchRepository = matchRepository;
         this.offerRepository = offerRepository;
         this.requestRepository = requestRepository;
         this.userRepository = userRepository;
+        this.matchingEngine = matchingEngine;
     }
 
     @Override
     public SkillMatch createMatch(Long offerId, Long requestId, Long adminUserId) {
+
         SkillOffer offer = offerRepository.findById(offerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Offer not found"));
 
@@ -40,7 +44,9 @@ public class MatchServiceImpl implements MatchService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         SkillMatch match = new SkillMatch(offer, request, admin);
-        match.setMatchScore(matchingEngine.calculateScore(offer, request));
+
+        double score = matchingEngine.calculateMatchScore(offer, request);
+        match.setMatchScore(score);
 
         return matchRepository.save(match);
     }

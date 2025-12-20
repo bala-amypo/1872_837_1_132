@@ -1,21 +1,21 @@
-// package com.example.barter.servlet;
+package com.example.barter.servlet;
 
-// import jakarta.servlet.ServletException;
-// import jakarta.servlet.http.HttpServlet;
-// import jakarta.servlet.http.HttpServletRequest;
-// import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-// import java.io.IOException;
+import java.io.IOException;
 
-// public class HealthServlet extends HttpServlet {
+public class HealthServlet extends HttpServlet {
 
-//     @Override
-//     protected void doGet(HttpServletRequest request,
-//                          HttpServletResponse response)
-//             throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response)
+            throws ServletException, IOException {
 
-//         response.setContentType("application/json");
-//         response.setStatus(HttpServletResponse.SC_OK);
-//         response.getWriter().write("{\"status\":\"UP\"}");
-//     }
-// }
+        response.setContentType("application/json");
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.getWriter().write("{\"status\":\"UP\"}");
+    }
+}
