@@ -54,4 +54,9 @@ public class SkillOfferServiceImpl implements SkillOfferService {
     public List<SkillOffer> getAvailableOffers() {
         return offerRepository.findByAvailability("AVAILABLE");
     }
+    @Override
+public List<SkillOffer> getAllOffers() {
+    return offerRepository.findAll();
+}
+
 }
