@@ -1,18 +1,19 @@
 package com.example.barter.config;
 
-import com.example.barter.repository.UserRepository;
-import com.example.barter.security.CustomUserDetailsService;
 import com.example.barter.security.JwtFilter;
 import com.example.barter.security.JwtUtil;
+import com.example.barter.security.CustomUserDetailsService;
+import com.example.barter.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.*;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.*;
-import org.springframework.security.web.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 @EnableMethodSecurity
@@ -29,7 +30,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -39,28 +40,23 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration config) throws Exception {
-        return config.getAuthenticationManager();
-    }
-
-    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http,
                                            JwtFilter jwtFilter) throws Exception {
 
         http
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session ->
-                    session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            )
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers(
-                            "/auth/**",
-                            "/swagger-ui/**",
-                            "/v3/api-docs/**",
-                            "/health"
-                    ).permitAll()
-                    .requestMatchers("/api/**").authenticated()
-                    .anyRequest().denyAll()
+                .requestMatchers(
+                    "/auth/**",
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**",
+                    "/health"
+                ).permitAll()
+                .requestMatchers("/api/**").authenticated()
+                .anyRequest().denyAll()
             );
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
