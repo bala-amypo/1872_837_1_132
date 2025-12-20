@@ -8,6 +8,8 @@ import com.example.barter.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -25,7 +27,6 @@ public class UserServiceImpl implements UserService {
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new BadRequestException("Email already in use");
         }
-
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
@@ -43,9 +44,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
     public User updateRating(Long userId, double newRating) {
+        if (newRating < 0.0 || newRating > 5.0) {
+            throw new BadRequestException("Rating must be between 0.0 and 5.0");
+        }
         User user = getById(userId);
-        user.setRating(newRating);
+        user.setRating(newRating);  // ensures method exists in User entity
         return userRepository.save(user);
     }
 }
