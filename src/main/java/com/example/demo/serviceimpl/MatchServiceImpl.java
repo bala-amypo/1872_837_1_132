@@ -23,6 +23,7 @@ public class MatchServiceImpl implements MatchService {
                             SkillRequestRepository requestRepository,
                             UserRepository userRepository,
                             SkillMatchingEngine matchingEngine) {
+
         this.matchRepository = matchRepository;
         this.offerRepository = offerRepository;
         this.requestRepository = requestRepository;
@@ -32,6 +33,7 @@ public class MatchServiceImpl implements MatchService {
 
     @Override
     public SkillMatch createMatch(Long offerId, Long requestId, Long adminUserId) {
+
         SkillOffer offer = offerRepository.findById(offerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Offer not found"));
 
@@ -42,7 +44,9 @@ public class MatchServiceImpl implements MatchService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         SkillMatch match = new SkillMatch(offer, request, admin);
-        match.setMatchScore(matchingEngine.calculateScore(offer, request));
+
+        double score = matchingEngine.calculateMatchScore(offer, request);
+        match.setMatchScore(score);
 
         return matchRepository.save(match);
     }
