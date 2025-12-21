@@ -1,38 +1,59 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
 public class SkillRequest {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Skill skill;
-    private UserProfile user;
+
+    private String skillName;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private SkillCategory skillCategory;
+
+    private String status = "OPEN";
+
     private boolean active = true;
 
-    public SkillRequest() {}
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserProfile user;
 
-    // ===== REQUIRED =====
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    /* ===== GETTERS & SETTERS ===== */
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Skill getSkill() {
-        return skill;
-    }
-
-    public void setSkill(Skill skill) {
-        this.skill = skill;
-    }
-
     public String getSkillName() {
-        return skill != null ? skill.getName() : null;
+        return skillName;
     }
 
-    public String getSkillCategory() {
-        return skill != null ? skill.getCategory() : null;
+    public void setSkillName(String skillName) {
+        this.skillName = skillName;
+    }
+
+    public SkillCategory getSkillCategory() {
+        return skillCategory;
+    }
+
+    public void setSkillCategory(SkillCategory skillCategory) {
+        this.skillCategory = skillCategory;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 
     public UserProfile getUser() {
@@ -43,11 +64,15 @@ public class SkillRequest {
         this.user = user;
     }
 
-    public boolean isActive() {
-        return active;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 }

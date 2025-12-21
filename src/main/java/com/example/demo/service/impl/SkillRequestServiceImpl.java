@@ -45,7 +45,7 @@ public class SkillRequestServiceImpl implements SkillRequestService {
 
     @Override
     public List<SkillRequest> getRequestsByCategory(Long categoryId) {
-        return requestRepository.findBySkill_Category_Id(categoryId);
+        return requestRepository.findBySkillCategoryId(categoryId);
     }
 
     @Override
