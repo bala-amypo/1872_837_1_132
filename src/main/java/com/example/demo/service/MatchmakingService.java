@@ -1,11 +1,9 @@
 package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
+import com.example.demo.model.MatchRecord;
 
-@Service
-public class MatchmakingService {
-
-    public String runMatchmaking() {
-        return "Matchmaking executed successfully";
-    }
+public interface MatchmakingService {
+    String findMatches();
+    List<MatchRecord> getMatchesForUser(Long userId);
 }

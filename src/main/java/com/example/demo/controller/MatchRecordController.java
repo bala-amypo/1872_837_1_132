@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.MatchmakingService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/matches")
@@ -17,6 +15,6 @@ public class MatchRecordController {
 
     @GetMapping
     public String getMatches() {
-        return matchmakingService.runMatchmaking();
+        return matchmakingService.findMatches();
     }
 }
