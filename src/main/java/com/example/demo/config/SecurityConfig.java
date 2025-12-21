@@ -1,9 +1,9 @@
 package com.example.demo.config;
 
-import com.example.barter.security.JwtFilter;
-import com.example.barter.security.JwtUtil;
-import com.example.barter.security.CustomUserDetailsService;
-import com.example.barter.repository.UserRepository;
+import com.example.demo.security.JwtFilter;
+import com.example.demo.security.JwtUtil;
+import com.example.demo.security.CustomUserDetailsService;
+import com.example.demo.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;

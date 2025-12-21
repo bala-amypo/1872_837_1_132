@@ -1,8 +1,8 @@
 package com.example.demo.util;
 
-import com.example.barter.model.SkillOffer;
-import com.example.barter.model.SkillRequest;
-import com.example.barter.model.User;
+import com.example.demo.model.SkillOffer;
+import com.example.demo.model.SkillRequest;
+import com.example.demo.model.User;
 import org.springframework.stereotype.Component;
 
 @Component

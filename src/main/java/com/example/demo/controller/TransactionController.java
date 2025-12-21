@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.barter.model.BarterTransaction;
-import com.example.barter.service.TransactionService;
+import com.example.demo.model.BarterTransaction;
+import com.example.demo.service.TransactionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
