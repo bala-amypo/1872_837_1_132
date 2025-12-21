@@ -1,11 +1,27 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "skill_offers")
 public class SkillOffer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "skill_id")
     private Skill skill;
+
+    @Column(nullable = false)
     private String experienceLevel;
+
+    @Column(nullable = false)
     private boolean active = true;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private UserProfile user;
 
     public SkillOffer() {}
