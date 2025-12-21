@@ -3,9 +3,9 @@ package com.example.demo.service;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MatchingService {
+public class MatchmakingService {
 
-    public String findMatches() {
-        return "Matching result";
+    public String runMatchmaking() {
+        return "Matchmaking executed successfully";
     }
 }
