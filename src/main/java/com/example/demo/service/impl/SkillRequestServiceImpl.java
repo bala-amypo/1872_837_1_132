@@ -57,4 +57,14 @@ public class SkillRequestServiceImpl implements SkillRequestService {
     public List<SkillRequest> getOpenRequests() {
         return requestRepository.findByActiveTrue();
     }
+    @Override
+public SkillRequest create(SkillRequest request) {
+    return createRequest(request);
+}
+
+@Override
+public SkillRequest getRequestById(Long id) {
+    return getRequest(id);
+}
+
 }

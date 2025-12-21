@@ -1,52 +1,31 @@
-package com.example.demo.model;
-
+@Entity
 public class SkillOffer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Skill skill;
+
     private String experienceLevel;
     private boolean active = true;
+
+    @ManyToOne
+    private Skill skill;
+
+    @ManyToOne
     private UserProfile user;
 
-    public SkillOffer() {}
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getExperienceLevel() { return experienceLevel; }
+    public void setExperienceLevel(String experienceLevel) { this.experienceLevel = experienceLevel; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public boolean isActive() { return active; }
+    public void setActive(boolean active) { this.active = active; }
 
-    public Skill getSkill() {
-        return skill;
-    }
+    public Skill getSkill() { return skill; }
+    public void setSkill(Skill skill) { this.skill = skill; }
 
-    public void setSkill(Skill skill) {
-        this.skill = skill;
-    }
-
-    public String getExperienceLevel() {
-        return experienceLevel;
-    }
-
-    public void setExperienceLevel(String experienceLevel) {
-        this.experienceLevel = experienceLevel;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public UserProfile getUser() {
-        return user;
-    }
-
-    public void setUser(UserProfile user) {
-        this.user = user;
-    }
+    public UserProfile getUser() { return user; }
+    public void setUser(UserProfile user) { this.user = user; }
 }
