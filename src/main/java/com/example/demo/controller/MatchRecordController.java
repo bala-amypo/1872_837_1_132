@@ -13,8 +13,8 @@ public class MatchRecordController {
         this.matchmakingService = matchmakingService;
     }
 
-    @GetMapping
-    public String getMatches() {
-        return matchmakingService.findMatches();
+    @GetMapping("/{userId}")
+    public Object getMatches(@PathVariable Long userId) {
+        return matchingService.getMatchesForUser(userId);
     }
 }
