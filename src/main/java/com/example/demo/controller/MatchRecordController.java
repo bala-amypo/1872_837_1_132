@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/matches")
 public class MatchRecordController {
 
-    private final MatchmakingService matchmakingService;
+    private final MatchmakingService matchingService;
 
-    public MatchRecordController(MatchmakingService matchmakingService) {
-        this.matchmakingService = matchmakingService;
+    public MatchRecordController(MatchmakingService matchingService) {
+        this.matchingService = matchingService;
     }
 
     @GetMapping("/{userId}")
