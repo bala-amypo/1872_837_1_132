@@ -21,7 +21,7 @@ public class SecurityConfig {
 
     @Bean
     public JwtUtil jwtUtil() {
-        return new JwtUtil("very_secret_key_which_should_be_256_bits", 86400000);
+        return new JwtUtil();   // ✅ FIXED
     }
 
     @Bean
