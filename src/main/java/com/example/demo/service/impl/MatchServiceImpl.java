@@ -39,9 +39,16 @@ public class MatchServiceImpl implements MatchService {
         User admin = userRepository.findById(adminUserId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-        SkillMatch match = new SkillMatch(offer, request, admin);
+        // 🔥 Convert User → UserProfile
+        UserProfile profile = new UserProfile(
+                admin.getId(),
+                admin.getFullName(),   // adjust if your User has getUsername()
+                admin.getEmail()
+        );
 
-        // TEMP: no matching engine
+        SkillMatch match = new SkillMatch(offer, request, profile);
+
+        // CRUD-only default
         match.setMatchScore(0.0);
 
         return matchRepository.save(match);

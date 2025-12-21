@@ -15,13 +15,28 @@ public class UserProfile {
     private String email;
     private boolean active = true;
 
+    // 🔥 ADD THESE BACK
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+
     public UserProfile() {}
 
-    // 🔥 ADD THIS BACK
+    // 🔥 constructor used by service
     public UserProfile(Long id, String username, String email) {
         this.id = id;
         this.username = username;
         this.email = email;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = this.createdAt;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
     // getters & setters
@@ -36,7 +51,4 @@ public class UserProfile {
 
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
-
-    public Timestamp getCreatedAt() { return createdAt; }
-    public Timestamp getUpdatedAt() { return updatedAt; }
 }
