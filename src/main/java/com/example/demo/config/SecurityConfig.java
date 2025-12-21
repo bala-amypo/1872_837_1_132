@@ -21,7 +21,7 @@ public class SecurityConfig {
 
     @Bean
     public JwtUtil jwtUtil() {
-        return new JwtUtil();   // ✅ FIXED
+        return new JwtUtil("test-secret-key", 86400000L);
     }
 
     @Bean

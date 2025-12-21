@@ -1,19 +1,14 @@
 package com.example.demo.model;
 
 public class MatchRecord {
-    private Long id;
 
-    public MatchRecord() {}
+    private String status;
 
-    public MatchRecord(Long id) {
-        this.id = id;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public String getStatus() {
+        return status;
     }
 }
