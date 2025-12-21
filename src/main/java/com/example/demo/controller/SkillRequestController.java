@@ -4,6 +4,8 @@ import com.example.demo.model.SkillRequest;
 import com.example.demo.service.SkillRequestService;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+
 
 import java.util.List;
 
@@ -48,9 +50,9 @@ public class SkillRequestController {
 
     // DELETE
 @DeleteMapping("/{id}")
-public String delete(@PathVariable Long id) {
+public ResponseEntity<String> delete(@PathVariable Long id) {
     service.deleteRequest(id);
-    return "Skill request deleted successfully";
+    return ResponseEntity.ok("Skill request deleted successfully");
 }
 
 }
