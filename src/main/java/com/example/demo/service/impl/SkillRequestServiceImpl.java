@@ -25,8 +25,8 @@ public class SkillRequestServiceImpl implements SkillRequestService {
             throw new BadRequestException("Skill name must be at least 5 characters");
         }
 
-        if (request.getSkill() == null) {
-            throw new BadRequestException("Skill is required");
+        if (request.getSkillCategory() == null) {
+            throw new BadRequestException("Skill category is required");
         }
 
         return requestRepository.save(request);
@@ -45,7 +45,7 @@ public class SkillRequestServiceImpl implements SkillRequestService {
 
     @Override
     public List<SkillRequest> getRequestsByCategory(Long categoryId) {
-        return requestRepository.findBySkillCategoryId(categoryId);
+        return requestRepository.findBySkillCategory_Id(categoryId);
     }
 
     @Override

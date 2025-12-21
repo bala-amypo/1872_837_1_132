@@ -9,9 +9,10 @@ public interface SkillRequestRepository extends JpaRepository<SkillRequest, Long
 
     List<SkillRequest> findByUserId(Long userId);
 
-    // Correct nested property traversal
-    List<SkillRequest> findBySkill_Category_Id(Long categoryId);
+    // 🔑 Correct nested property traversal
+    List<SkillRequest> findBySkillCategory_Id(Long categoryId);
 
-    // Use boolean field, not status
+    List<SkillRequest> findByStatus(String status);
+
     List<SkillRequest> findByActiveTrue();
 }
