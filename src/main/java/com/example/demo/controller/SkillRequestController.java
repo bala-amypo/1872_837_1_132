@@ -47,8 +47,10 @@ public class SkillRequestController {
     }
 
     // DELETE
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        service.deleteRequest(id);
-    }
+@DeleteMapping("/{id}")
+public String delete(@PathVariable Long id) {
+    service.deleteRequest(id);
+    return "Skill request deleted successfully";
+}
+
 }
