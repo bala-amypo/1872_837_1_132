@@ -1,13 +1,13 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.SkillOffer;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/offers")
 public class SkillOfferController {
 
-    @GetMapping
-    public String getOffers() {
-        return "offers";
+    @PostMapping("/offers")
+    public SkillOffer create(SkillOffer offer) {
+        return offer;
     }
 }

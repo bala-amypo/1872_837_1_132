@@ -4,17 +4,16 @@ import com.example.demo.service.MatchmakingService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/matches")
 public class MatchRecordController {
 
-    private final MatchmakingService matchingService;
+    private final MatchmakingService service;
 
-    public MatchRecordController(MatchmakingService matchingService) {
-        this.matchingService = matchingService;
+    public MatchRecordController(MatchmakingService service) {
+        this.service = service;
     }
 
-    @GetMapping("/{userId}")
-    public Object getMatches(@PathVariable Long userId) {
-        return matchingService.getMatchesForUser(userId);
+    @GetMapping("/matches/{userId}")
+    public Object getMatchesForUser(Long userId) {
+        return service.getMatchesForUser(userId);
     }
 }
