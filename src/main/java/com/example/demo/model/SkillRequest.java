@@ -10,7 +10,9 @@ public class SkillRequest {
     private Long id;
 
     private String skillName;
+
     private String urgencyLevel;
+
     private boolean active = true;
 
     @ManyToOne
@@ -22,25 +24,57 @@ public class SkillRequest {
     @ManyToOne
     private UserProfile user;
 
-    // REQUIRED BY TEST
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    /* ===== REQUIRED GETTERS / SETTERS ===== */
 
-    public String getSkillName() { return skillName; }
-    public void setSkillName(String skillName) { this.skillName = skillName; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getUrgencyLevel() { return urgencyLevel; }
-    public void setUrgencyLevel(String urgencyLevel) { this.urgencyLevel = urgencyLevel; }
+    public String getSkillName() {
+        return skillName;
+    }
 
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
+    public void setSkillName(String skillName) {
+        this.skillName = skillName;
+    }
 
-    public Skill getSkill() { return skill; }
-    public void setSkill(Skill skill) { this.skill = skill; }
+    public Skill getSkill() {
+        return skill;
+    }
 
-    public SkillCategory getSkillCategory() { return skillCategory; }
-    public void setSkillCategory(SkillCategory skillCategory) { this.skillCategory = skillCategory; }
+    public void setSkill(Skill skill) {
+        this.skill = skill;
+    }
 
-    public UserProfile getUser() { return user; }
-    public void setUser(UserProfile user) { this.user = user; }
+    public SkillCategory getSkillCategory() {
+        return skillCategory;
+    }
+
+    public void setSkillCategory(SkillCategory skillCategory) {
+        this.skillCategory = skillCategory;
+    }
+
+    public String getUrgencyLevel() {
+        return urgencyLevel;
+    }
+
+    public void setUrgencyLevel(String urgencyLevel) {
+        this.urgencyLevel = urgencyLevel;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public UserProfile getUser() {
+        return user;
+    }
+
+    public void setUser(UserProfile user) {
+        this.user = user;
+    }
 }
