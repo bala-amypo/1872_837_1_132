@@ -1,4 +1,4 @@
-package com.example.barter.repository;
+package com.example.demo.repository;
 
 import com.example.barter.model.SkillCategory;
 import org.springframework.data.jpa.repository.JpaRepository;

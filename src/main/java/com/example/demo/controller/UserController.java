@@ -1,4 +1,4 @@
-package com.example.barter.controller;
+package com.example.demo.controller;
 
 import com.example.barter.model.User;
 import com.example.barter.service.UserService;

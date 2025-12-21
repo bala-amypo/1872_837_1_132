@@ -1,4 +1,4 @@
-package com.example.barter.util;
+package com.example.demo.util;
 
 import com.example.barter.model.SkillOffer;
 import com.example.barter.model.SkillRequest;

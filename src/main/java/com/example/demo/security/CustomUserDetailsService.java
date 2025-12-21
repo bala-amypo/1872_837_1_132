@@ -1,4 +1,4 @@
-package com.example.barter.security;
+package com.example.demo.security;
 
 import com.example.barter.model.User;
 import com.example.barter.repository.UserRepository;
