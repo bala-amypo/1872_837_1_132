@@ -4,7 +4,6 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.MatchService;
-import com.example.demo.util.SkillMatchingEngine;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,19 +15,16 @@ public class MatchServiceImpl implements MatchService {
     private final SkillOfferRepository offerRepository;
     private final SkillRequestRepository requestRepository;
     private final UserRepository userRepository;
-    private final SkillMatchingEngine matchingEngine;
 
     public MatchServiceImpl(SkillMatchRepository matchRepository,
                             SkillOfferRepository offerRepository,
                             SkillRequestRepository requestRepository,
-                            UserRepository userRepository,
-                            SkillMatchingEngine matchingEngine) {
+                            UserRepository userRepository) {
 
         this.matchRepository = matchRepository;
         this.offerRepository = offerRepository;
         this.requestRepository = requestRepository;
         this.userRepository = userRepository;
-        this.matchingEngine = matchingEngine;
     }
 
     @Override
@@ -45,8 +41,8 @@ public class MatchServiceImpl implements MatchService {
 
         SkillMatch match = new SkillMatch(offer, request, admin);
 
-        double score = matchingEngine.calculateMatchScore(offer, request);
-        match.setMatchScore(score);
+        // TEMP: no matching engine
+        match.setMatchScore(0.0);
 
         return matchRepository.save(match);
     }
