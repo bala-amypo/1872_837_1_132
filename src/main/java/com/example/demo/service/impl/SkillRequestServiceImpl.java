@@ -3,7 +3,6 @@ package com.example.demo.service.impl;
 import com.example.demo.exception.BadRequestException;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.SkillRequest;
-import com.example.demo.repository.SkillCategoryRepository;
 import com.example.demo.repository.SkillRequestRepository;
 import com.example.demo.service.SkillRequestService;
 import org.springframework.stereotype.Service;
@@ -14,22 +13,21 @@ import java.util.List;
 public class SkillRequestServiceImpl implements SkillRequestService {
 
     private final SkillRequestRepository requestRepository;
-    private final SkillCategoryRepository categoryRepository;
 
-    public SkillRequestServiceImpl(SkillRequestRepository requestRepository,
-                                   SkillCategoryRepository categoryRepository) {
+    public SkillRequestServiceImpl(SkillRequestRepository requestRepository) {
         this.requestRepository = requestRepository;
-        this.categoryRepository = categoryRepository;
     }
 
     @Override
     public SkillRequest createRequest(SkillRequest request) {
+
         if (request.getSkillName() == null || request.getSkillName().length() < 5) {
             throw new BadRequestException("Skill name must be at least 5 characters");
         }
 
-        categoryRepository.findById(request.getSkillCategory().getId())
-                .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
+        if (request.getSkill() == null) {
+            throw new BadRequestException("Skill is required");
+        }
 
         return requestRepository.save(request);
     }
@@ -47,15 +45,16 @@ public class SkillRequestServiceImpl implements SkillRequestService {
 
     @Override
     public List<SkillRequest> getRequestsByCategory(Long categoryId) {
-        return requestRepository.findBySkillCategoryId(categoryId);
+        return requestRepository.findBySkill_Category_Id(categoryId);
     }
-@Override
-public List<SkillRequest> getAllRequests() {
-    return requestRepository.findAll();
-}
+
+    @Override
+    public List<SkillRequest> getAllRequests() {
+        return requestRepository.findAll();
+    }
 
     @Override
     public List<SkillRequest> getOpenRequests() {
-        return requestRepository.findByStatus("OPEN");
+        return requestRepository.findByActiveTrue();
     }
 }
