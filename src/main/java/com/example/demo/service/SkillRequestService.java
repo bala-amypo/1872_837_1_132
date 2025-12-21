@@ -1,3 +1,5 @@
+package com.example.demo.service.SkillRequestService;
+
 public interface SkillRequestService {
 
     SkillRequest create(SkillRequest request);
