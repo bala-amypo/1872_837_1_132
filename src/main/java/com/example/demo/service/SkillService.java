@@ -1,11 +1,7 @@
 package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
+import com.example.demo.model.Skill;
 
-@Service
-public class SkillService {
-
-    public String getAllSkills() {
-        return "Skill list";
-    }
+public interface SkillService {
+    Skill updateSkill(Long id, Object skill);
 }
