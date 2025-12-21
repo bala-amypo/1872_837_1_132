@@ -13,6 +13,9 @@ public class SkillRequest {
 
     private String urgencyLevel;
 
+    // 🔥 ADD THIS FIELD
+    private String status = "OPEN";
+
     private boolean active = true;
 
     @ManyToOne
@@ -38,6 +41,30 @@ public class SkillRequest {
         this.skillName = skillName;
     }
 
+    public String getUrgencyLevel() {
+        return urgencyLevel;
+    }
+
+    public void setUrgencyLevel(String urgencyLevel) {
+        this.urgencyLevel = urgencyLevel;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public Skill getSkill() {
         return skill;
     }
@@ -52,22 +79,6 @@ public class SkillRequest {
 
     public void setSkillCategory(SkillCategory skillCategory) {
         this.skillCategory = skillCategory;
-    }
-
-    public String getUrgencyLevel() {
-        return urgencyLevel;
-    }
-
-    public void setUrgencyLevel(String urgencyLevel) {
-        this.urgencyLevel = urgencyLevel;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
     }
 
     public UserProfile getUser() {
