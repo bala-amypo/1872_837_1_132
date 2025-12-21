@@ -14,6 +14,10 @@ public class SkillOffer {
     @JoinColumn(name = "skill_id")
     private Skill skill;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private SkillCategory skillCategory;   // 🔥 THIS WAS MISSING
+
     private String experienceLevel;
 
     private boolean active = true;
