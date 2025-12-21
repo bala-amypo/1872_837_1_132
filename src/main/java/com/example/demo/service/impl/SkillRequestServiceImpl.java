@@ -46,4 +46,12 @@ public class SkillRequestServiceImpl implements SkillRequestService {
     public List<SkillRequest> getOpenRequests() {
         return repository.findByStatus("OPEN");
     }
+    @Override
+public void deleteRequest(Long id) {
+    if (!repository.existsById(id)) {
+        throw new ResourceNotFoundException("Request not found");
+    }
+    repository.deleteById(id);
+}
+
 }
