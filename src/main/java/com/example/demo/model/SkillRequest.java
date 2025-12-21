@@ -8,6 +8,8 @@ public class SkillRequest {
 
     public SkillRequest() {}
 
+    // ===== REQUIRED BY TESTS & SERVICES =====
+
     public Long getId() {
         return id;
     }
@@ -30,5 +32,15 @@ public class SkillRequest {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    // ===== CRITICAL ADDITIONS =====
+
+    public String getSkillName() {
+        return skill != null ? skill.getName() : null;
+    }
+
+    public String getSkillCategory() {
+        return skill != null ? skill.getCategory() : null;
     }
 }
