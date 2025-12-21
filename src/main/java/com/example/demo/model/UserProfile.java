@@ -15,20 +15,13 @@ public class UserProfile {
     private String email;
     private boolean active = true;
 
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
-
     public UserProfile() {}
 
-    @PrePersist
-    public void onCreate() {
-        createdAt = new Timestamp(System.currentTimeMillis());
-        updatedAt = createdAt;
-    }
-
-    @PreUpdate
-    public void onUpdate() {
-        updatedAt = new Timestamp(System.currentTimeMillis());
+    // 🔥 ADD THIS BACK
+    public UserProfile(Long id, String username, String email) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
     }
 
     // getters & setters
