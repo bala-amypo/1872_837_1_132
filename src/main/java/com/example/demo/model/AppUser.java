@@ -1,19 +1,19 @@
 package com.example.demo.model;
 
-public class MatchRecord {
+public class AppUser {
     private Long id;
-    private String status;
+    private String email;
+    private String role;
 
-    public MatchRecord() {}
+    public AppUser() {}
 
-    public MatchRecord(Long id, String status) {
+    public AppUser(Long id, String email, String role) {
         this.id = id;
-        this.status = status;
+        this.email = email;
+        this.role = role;
     }
 
     public Long getId() { return id; }
-    public String getStatus() { return status; }
-
-    public void setId(Long id) { this.id = id; }
-    public void setStatus(String status) { this.status = status; }
+    public String getEmail() { return email; }
+    public String getRole() { return role; }
 }

@@ -1,19 +1,19 @@
 package com.example.demo.model;
 
-public class SkillOffer {
+public class MatchRecord {
     private Long id;
-    private Skill skill;
+    private String status;
 
-    public SkillOffer() {}
+    public MatchRecord() {}
 
-    public SkillOffer(Long id, Skill skill) {
+    public MatchRecord(Long id, String status) {
         this.id = id;
-        this.skill = skill;
+        this.status = status;
     }
 
     public Long getId() { return id; }
-    public Skill getSkill() { return skill; }
+    public String getStatus() { return status; }
 
     public void setId(Long id) { this.id = id; }
-    public void setSkill(Skill skill) { this.skill = skill; }
+    public void setStatus(String status) { this.status = status; }
 }
