@@ -11,7 +11,18 @@ public class UserProfile {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    // REQUIRED: no-args constructor
     public UserProfile() {}
+
+    // ✅ REQUIRED: constructor used by service/tests
+    public UserProfile(Long id, String username, String email) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.active = true;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
