@@ -6,6 +6,10 @@ import java.util.Map;
 @Component
 public class JwtUtil {
 
+    public JwtUtil() {
+        // default constructor for Spring
+    }
+
     public String generateToken(Map<String, Object> claims, String subject) {
         return "jwt-token";
     }

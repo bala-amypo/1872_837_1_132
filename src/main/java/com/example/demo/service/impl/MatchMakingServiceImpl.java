@@ -12,7 +12,7 @@ public class MatchmakingServiceImpl implements MatchmakingService {
 
     @Override
     public String findMatches() {
-        return "matches-found";
+        return "matches";
     }
 
     @Override
