@@ -1,27 +1,16 @@
 package com.example.demo.dto;
 
 public class LoginResponse {
-
     private String token;
-    private String message;
+    private String role;
 
-    public LoginResponse() {
-    }
+    public LoginResponse() {}
 
-    public LoginResponse(String token) {
+    public LoginResponse(String token, String role) {
         this.token = token;
+        this.role = role;
     }
 
-    public LoginResponse(String token, String message) {
-        this.token = token;
-        this.message = message;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getMessage() {
-        return message;
-    }
+    public String getToken() { return token; }
+    public String getRole() { return role; }
 }
