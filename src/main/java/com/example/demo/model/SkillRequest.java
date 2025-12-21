@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 public class SkillRequest {
@@ -12,21 +11,20 @@ public class SkillRequest {
 
     private String skillName;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private SkillCategory skillCategory;
-
-    private String status = "OPEN";
+    private String urgencyLevel;
 
     private boolean active = true;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    private Skill skill;
+
+    @ManyToOne
+    private SkillCategory skillCategory;
+
+    @ManyToOne
     private UserProfile user;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
-
-    /* ===== GETTERS & SETTERS ===== */
+    /* ===== REQUIRED GETTERS / SETTERS ===== */
 
     public Long getId() {
         return id;
@@ -40,6 +38,14 @@ public class SkillRequest {
         this.skillName = skillName;
     }
 
+    public Skill getSkill() {
+        return skill;
+    }
+
+    public void setSkill(Skill skill) {
+        this.skill = skill;
+    }
+
     public SkillCategory getSkillCategory() {
         return skillCategory;
     }
@@ -48,12 +54,20 @@ public class SkillRequest {
         this.skillCategory = skillCategory;
     }
 
-    public String getStatus() {
-        return status;
+    public String getUrgencyLevel() {
+        return urgencyLevel;
+    }
+
+    public void setUrgencyLevel(String urgencyLevel) {
+        this.urgencyLevel = urgencyLevel;
     }
 
     public boolean isActive() {
         return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public UserProfile getUser() {
@@ -62,17 +76,5 @@ public class SkillRequest {
 
     public void setUser(UserProfile user) {
         this.user = user;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
     }
 }
