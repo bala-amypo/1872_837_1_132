@@ -12,6 +12,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
+            .cors() // ✅ THIS LINE FIXES SWAGGER + BROWSER CALLS
+            .and()
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
