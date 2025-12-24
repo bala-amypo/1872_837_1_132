@@ -34,7 +34,7 @@ public class SkillController {
 
     // ✅ FIX 2
     @GetMapping
-    public List<Skill> getAll() {
+    public List<Skill> getAllSkills() {
         return skillService.getAllSkills();
     }
 }
