@@ -1,7 +1,8 @@
-package com.example.demo.controller;
+package com.example.barter.controller;
 
-import com.example.demo.model.SkillRequest;
-import com.example.demo.service.SkillRequestService;
+import com.example.barter.model.SkillRequest;
+import com.example.barter.service.SkillRequestService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,18 +17,13 @@ public class SkillRequestController {
         this.service = service;
     }
 
-    @PostMapping
-    public SkillRequest create(@RequestBody SkillRequest request) {
-        return service.create(request);
-    }
-
     @GetMapping("/{id}")
-    public SkillRequest get(@PathVariable Long id) {
-        return service.get(id);
+    public ResponseEntity<SkillRequest> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getRequestById(id));
     }
 
-    @GetMapping
-    public List<SkillRequest> list() {
-        return service.getAll();
+    @GetMapping("/open")
+    public ResponseEntity<List<SkillRequest>> list() {
+        return ResponseEntity.ok(service.getOpenRequests());
     }
 }

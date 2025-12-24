@@ -1,8 +1,8 @@
-package com.example.demo.service.impl;
+package com.example.barter.service.impl;
 
-import com.example.demo.model.SkillRequest;
-import com.example.demo.repository.SkillRequestRepository;
-import com.example.demo.service.SkillRequestService;
+import com.example.barter.model.SkillRequest;
+import com.example.barter.repository.SkillRequestRepository;
+import com.example.barter.service.SkillRequestService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,22 +17,13 @@ public class SkillRequestServiceImpl implements SkillRequestService {
     }
 
     @Override
-    public SkillRequest create(SkillRequest request) {
-        return repository.save(request);
+    public SkillRequest getRequestById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Request not found"));
     }
 
     @Override
-    public SkillRequest get(Long id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    @Override
-    public List<SkillRequest> getAll() {
-        return repository.findAll();
-    }
-
-    @Override
-    public List<SkillRequest> getByUser(Long userId) {
-        return repository.findByUserId(userId);
+    public List<SkillRequest> getOpenRequests() {
+        return repository.findByStatus("OPEN");
     }
 }
