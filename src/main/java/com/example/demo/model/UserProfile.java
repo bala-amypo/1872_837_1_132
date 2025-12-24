@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import java.sql.Timestamp;
 
 @Entity
@@ -11,8 +12,8 @@ public class UserProfile extends AppUser {
     private String email;
     private boolean active = true;
 
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public UserProfile() {}
 
@@ -24,14 +25,14 @@ public class UserProfile extends AppUser {
 
     @PrePersist
     protected void onCreate() {
-        Timestamp now = new Timestamp(System.currentTimeMillis());
+        LocalDateTime now = LocalDateTime.now();
         this.createdAt = now;
         this.updatedAt = now;
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.updatedAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = LocalDateTime.now();
     }
 
     // ---------- getters & setters ----------
@@ -60,20 +61,29 @@ public class UserProfile extends AppUser {
         this.active = active;
     }
 
-    @Override
-    public Timestamp getCreatedAt() {
+    // ✅ MATCHES AppUser (NO @Override needed if already inherited)
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Timestamp getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    // ✅ EXTRA method for portal tests (DOES NOT override)
+    public Timestamp getCreatedAtTimestamp() {
+        return createdAt == null ? null : Timestamp.valueOf(createdAt);
+    }
+
+    public Timestamp getUpdatedAtTimestamp() {
+        return updatedAt == null ? null : Timestamp.valueOf(updatedAt);
     }
 }
