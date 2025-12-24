@@ -5,6 +5,7 @@ import com.example.demo.model.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.MatchService;
 import org.springframework.stereotype.Service;
+import com.example.demo.repository.UserRepository;
 
 import java.util.List;
 

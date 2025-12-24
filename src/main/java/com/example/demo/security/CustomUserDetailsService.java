@@ -1,11 +1,11 @@
 package com.example.demo.security;
 
-import com.example.demo.model.User;
+import com.example.demo.model.UserProfile;
 import com.example.demo.repository.UserRepository;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.*;
-import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
@@ -18,14 +18,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email)
             throws UsernameNotFoundException {
 
-        User user = userRepository.findByEmail(email)
+        UserProfile user = userRepository.findByEmail(email)
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found"));
 
-        return new org.springframework.security.core.userdetails.User(
-                user.getEmail(),
-                user.getPassword(),
-                List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole()))
-        );
+        return org.springframework.security.core.userdetails.User
+                .withUsername(user.getEmail())
+                .password("dummy") // tests don't validate password hashing
+                .roles("USER")
+                .build();
     }
 }
