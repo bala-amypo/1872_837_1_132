@@ -1,27 +1,30 @@
-package com.example.demo.serviceimpl;
+package com.example.demo.service.impl;
 
 import com.example.demo.model.SkillOffer;
 import com.example.demo.service.SkillOfferService;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-@Service
 public class SkillOfferServiceImpl implements SkillOfferService {
 
     @Override
-    public SkillOffer create(SkillOffer offer) {
-        return offer;
+    public SkillOffer createOffer(Object obj) {
+        return new SkillOffer();
     }
 
     @Override
-    public SkillOffer get(Long id) {
+    public SkillOffer getOfferById(Long id) {
         return new SkillOffer();
     }
 
     @Override
     public List<SkillOffer> getAll() {
-        return new ArrayList<>();
+        return Collections.emptyList();
+    }
+
+    @Override
+    public List<SkillOffer> getOffersByUser(Long userId) {
+        return Collections.emptyList();
     }
 }

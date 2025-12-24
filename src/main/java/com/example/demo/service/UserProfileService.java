@@ -3,7 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.UserProfile;
 import org.springframework.http.ResponseEntity;
 
-public class UserProfileService {
+public interface UserProfileService {
 
     ResponseEntity<UserProfile> createUser(Object obj);
 

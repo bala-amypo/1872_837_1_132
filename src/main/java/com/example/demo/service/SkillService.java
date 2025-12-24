@@ -3,6 +3,6 @@ package com.example.demo.service;
 import com.example.demo.model.Skill;
 import java.util.List;
 
-public class SkillService {
+public interface SkillService {
     List<Skill> getAllSkills();
 }

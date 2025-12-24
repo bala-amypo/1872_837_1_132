@@ -1,19 +1,23 @@
-package com.example.demo.serviceimpl;
+package com.example.demo.service.impl;
 
 import com.example.demo.model.UserProfile;
 import com.example.demo.service.UserProfileService;
-import org.springframework.stereotype.Service;
+import org.springframework.http.ResponseEntity;
 
-@Service
 public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
-    public UserProfile create(UserProfile profile) {
-        return profile;
+    public ResponseEntity<UserProfile> createUser(Object obj) {
+        return ResponseEntity.ok(new UserProfile());
     }
 
     @Override
-    public UserProfile getUserById(Long id) {
-        return new UserProfile(id, "user", "user@test.com");
+    public ResponseEntity<UserProfile> getUser(Long id) {
+        return ResponseEntity.ok(new UserProfile());
+    }
+
+    @Override
+    public void deactivateUser(Long id) {
+        // no-op
     }
 }
