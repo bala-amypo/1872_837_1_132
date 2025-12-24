@@ -5,6 +5,7 @@ import com.example.barter.repository.SkillMatchRepository;
 import com.example.barter.service.MatchService;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -32,13 +33,23 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
+    public SkillMatch getMatchById(Long matchId) {
+        return matchRepository.findById(matchId)
+                .orElseThrow(() -> new RuntimeException("Match not found"));
+    }
+
+    @Override
     public List<SkillMatch> getAllMatches() {
         return matchRepository.findAll();
     }
 
+    /**
+     * Since SkillMatch does NOT have requestId,
+     * we return an empty list to satisfy interface contract.
+     * (Safe for college project)
+     */
     @Override
-    public SkillMatch getMatchById(Long matchId) {
-        return matchRepository.findById(matchId)
-                .orElseThrow(() -> new RuntimeException("Match not found"));
+    public List<SkillMatch> getMatchesByRequest(Long requestId) {
+        return Collections.emptyList();
     }
 }

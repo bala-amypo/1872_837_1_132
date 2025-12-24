@@ -10,5 +10,4 @@ import java.util.List;
 public interface SkillMatchRepository extends JpaRepository<SkillMatch, Long> {
 
     List<SkillMatch> findByMatchStatus(String matchStatus);
-
 }
