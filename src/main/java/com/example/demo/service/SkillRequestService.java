@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.model.SkillRequest;
-import java.util.List;
 
 public interface SkillRequestService {
 
@@ -16,7 +15,6 @@ public interface SkillRequestService {
     List<SkillRequest> getOpenRequests();
 
     void deleteRequest(Long id);
-    public SkillRequest getRequestById(long id) {
-        return new SkillRequest();
-    }
+
+    SkillRequest getRequestById(Long id);
 }

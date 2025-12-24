@@ -5,15 +5,9 @@ import org.springframework.http.ResponseEntity;
 
 public class UserProfileService {
 
-    public ResponseEntity<UserProfile> createUser(Object obj) {
-        return ResponseEntity.ok(new UserProfile());
-    }
+    ResponseEntity<UserProfile> createUser(Object obj);
 
-    public ResponseEntity<UserProfile> getUser(Long id) {
-        return ResponseEntity.ok(new UserProfile());
-    }
+    ResponseEntity<UserProfile> getUser(Long id);
 
-    public void deactivateUser(Long id) {
-        // no-op
-    }
+    void deactivateUser(Long id);
 }
