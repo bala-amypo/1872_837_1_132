@@ -1,14 +1,13 @@
 package com.example.barter.service;
 
 import com.example.barter.model.BarterTransaction;
-
 import java.util.List;
 
 public interface TransactionService {
 
-    BarterTransaction createTransaction(Long matchId);
+    BarterTransaction createTransaction(BarterTransaction transaction);
 
-    BarterTransaction getTransaction(Long id);
+    BarterTransaction getTransactionById(Long id);
 
     List<BarterTransaction> getAllTransactions();
 }

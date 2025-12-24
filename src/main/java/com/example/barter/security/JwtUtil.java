@@ -1,45 +1,25 @@
 package com.example.barter.security;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.stereotype.Component;
+
+import java.util.Date;
+
+@Component
 public class JwtUtil {
 
-    private String secret;
-    private long expiration;
+    private final String secret = "secret";
+    private final long expiration = 100000;
 
-    // REQUIRED constructor (test expects this)
-    public JwtUtil(String secret, long expiration) {
-        this.secret = secret;
-        this.expiration = expiration;
-    }
-
-    // REQUIRED no-args constructor (Spring expects this)
-    public JwtUtil() {
-    }
-
-    // REQUIRED by tests
-    public String generateToken(String email, String role, long userId) {
-        return email + "|" + role + "|" + userId;
-    }
-
-    // REQUIRED by tests
-    public boolean validateToken(String token) {
-        return token != null && token.contains("|");
-    }
-
-    // REQUIRED by tests
-    public String extractRole(String token) {
-        return token.split("\\|")[1];
-    }
-
-    // REQUIRED by tests
-    public Long extractUserId(String token) {
-        return Long.parseLong(token.split("\\|")[2]);
-    }
-
-    // REQUIRED by tests
-    public String getEmail(String token) {
-        return token.split("\\|")[0];
-    }
-    public String extractEmail(String token) {
-        return "dummy@email.com";
+    public String generateToken(String email, String role, Long userId) {
+        return Jwts.builder()
+                .setSubject(email)
+                .claim("role", role)
+                .claim("userId", userId)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + expiration))
+                .signWith(SignatureAlgorithm.HS256, secret)
+                .compact();
     }
 }
