@@ -1,45 +1,38 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.SkillRequest;
+import com.example.demo.repository.SkillRequestRepository;
 import com.example.demo.service.SkillRequestService;
+import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
+@Service
 public class SkillRequestServiceImpl implements SkillRequestService {
 
-    @Override
-    public SkillRequest createRequest(SkillRequest request) {
-        return request;
+    private final SkillRequestRepository repository;
+
+    public SkillRequestServiceImpl(SkillRequestRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public SkillRequest getRequest(Long id) {
-        return new SkillRequest();
+    public SkillRequest create(SkillRequest request) {
+        return repository.save(request);
     }
 
     @Override
-    public SkillRequest getRequestById(Long id) {
-        return new SkillRequest();
+    public SkillRequest get(Long id) {
+        return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<SkillRequest> getRequestsByUser(Long userId) {
-        return Collections.emptyList();
+    public List<SkillRequest> getAll() {
+        return repository.findAll();
     }
 
     @Override
-    public List<SkillRequest> getRequestsByCategory(Long categoryId) {
-        return Collections.emptyList();
-    }
-
-    @Override
-    public List<SkillRequest> getOpenRequests() {
-        return Collections.emptyList();
-    }
-
-    @Override
-    public void deleteRequest(Long id) {
-        // no-op
+    public List<SkillRequest> getByUser(Long userId) {
+        return repository.findByUserId(userId);
     }
 }
