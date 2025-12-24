@@ -29,7 +29,6 @@ public class SkillMatch {
         this.matchStatus = matchStatus;
     }
 
-    // Used by MatchServiceImpl
     public void setStatus(String status) {
         this.matchStatus = status;
     }

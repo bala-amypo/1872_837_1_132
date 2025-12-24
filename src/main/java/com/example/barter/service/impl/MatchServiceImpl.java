@@ -1,6 +1,5 @@
 package com.example.barter.service.impl;
 
-import com.example.barter.exception.ResourceNotFoundException;
 import com.example.barter.model.SkillMatch;
 import com.example.barter.repository.SkillMatchRepository;
 import com.example.barter.service.MatchService;
@@ -18,25 +17,18 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public SkillMatch createMatch(Long requestId, Long offerId, Long userId) {
-        SkillMatch match = new SkillMatch();
-        match.setMatchStatus("CREATED");
+    public SkillMatch createMatch(SkillMatch match) {
+        match.setStatus("PENDING");
         return matchRepository.save(match);
     }
 
     @Override
     public SkillMatch updateMatchStatus(Long matchId, String status) {
         SkillMatch match = matchRepository.findById(matchId)
-                .orElseThrow(() -> new ResourceNotFoundException("Match not found"));
+                .orElseThrow(() -> new RuntimeException("Match not found"));
 
         match.setStatus(status);
         return matchRepository.save(match);
-    }
-
-    @Override
-    public SkillMatch getMatch(Long id) {
-        return matchRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Match not found"));
     }
 
     @Override
@@ -45,12 +37,8 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public List<SkillMatch> getMatchesByOffer(Long offerId) {
-        return matchRepository.findByOfferId(offerId);
-    }
-
-    @Override
-    public List<SkillMatch> getMatchesByRequest(Long requestId) {
-        return matchRepository.findByRequestId(requestId);
+    public SkillMatch getMatchById(Long matchId) {
+        return matchRepository.findById(matchId)
+                .orElseThrow(() -> new RuntimeException("Match not found"));
     }
 }
