@@ -3,92 +3,40 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "skill_requests")
-public class SkillRequest {
+@Table(name = "skills")
+public class Skill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String skillName;
-    private String status;
+    private String name;
+    private String category;
+    private String experienceLevel;
     private String urgencyLevel;
     private boolean active = true;
+    private String status;
 
-    @ManyToOne
-    private Skill skill;
+    public Skill() {}
 
-    @ManyToOne
-    private SkillCategory skillCategory;
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    @ManyToOne
-    private UserProfile user;
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public SkillRequest() {}
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
-    // ===== GETTERS & SETTERS =====
+    public String getExperienceLevel() { return experienceLevel; }
+    public void setExperienceLevel(String experienceLevel) { this.experienceLevel = experienceLevel; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getUrgencyLevel() { return urgencyLevel; }
+    public void setUrgencyLevel(String urgencyLevel) { this.urgencyLevel = urgencyLevel; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public boolean isActive() { return active; }
+    public void setActive(boolean active) { this.active = active; }
 
-    public String getSkillName() {
-        return skillName;
-    }
-
-    public void setSkillName(String skillName) {
-        this.skillName = skillName;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getUrgencyLevel() {
-        return urgencyLevel;
-    }
-
-    public void setUrgencyLevel(String urgencyLevel) {
-        this.urgencyLevel = urgencyLevel;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public Skill getSkill() {
-        return skill;
-    }
-
-    public void setSkill(Skill skill) {
-        this.skill = skill;
-    }
-
-    public SkillCategory getSkillCategory() {
-        return skillCategory;
-    }
-
-    public void setSkillCategory(SkillCategory skillCategory) {
-        this.skillCategory = skillCategory;
-    }
-
-    public UserProfile getUser() {
-        return user;
-    }
-
-    public void setUser(UserProfile user) {
-        this.user = user;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }
