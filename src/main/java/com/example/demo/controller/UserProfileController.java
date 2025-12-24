@@ -8,41 +8,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/profiles")
+@RequestMapping("/profiles")
 public class UserProfileController {
 
-    private final UserProfileService userProfileService;
+    private final UserProfileService service;
 
-    public UserProfileController(UserProfileService userProfileService) {
-        this.userProfileService = userProfileService;
+    public UserProfileController(UserProfileService service) {
+        this.service = service;
     }
 
-    // CREATE profile
     @PostMapping
-    public ResponseEntity<UserProfile> createProfile(
-            @RequestBody UserProfile profile) {
-
-        return ResponseEntity.ok(
-                userProfileService.createProfile(profile)
-        );
+    public UserProfile create(UserProfile profile) {
+        return service.create(profile);
     }
 
-    // GET profile by ID
     @GetMapping("/{id}")
-    public ResponseEntity<UserProfile> getProfile(
-            @PathVariable Long id) {
-
-        return ResponseEntity.ok(
-                userProfileService.getProfileById(id)
-        );
+    public UserProfile get(@PathVariable Long id) {
+        return service.getUserById(id);
     }
 
-    // GET all profiles
-    @GetMapping
-    public ResponseEntity<List<UserProfile>> getAllProfiles() {
-
-        return ResponseEntity.ok(
-                userProfileService.getAllProfiles()
-        );
+    @DeleteMapping("/{id}")
+    public void deactivate(@PathVariable Long id) {
+        service.deactivateUser(id);
     }
 }

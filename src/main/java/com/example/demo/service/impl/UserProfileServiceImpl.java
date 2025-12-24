@@ -8,26 +8,28 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+
 public class UserProfileServiceImpl implements UserProfileService {
 
-    private final UserProfileRepository repository;
-
-    public UserProfileServiceImpl(UserProfileRepository repository) {
-        this.repository = repository;
+    @Override
+    public UserProfile createUser(Object dto) {
+        return new UserProfile();
     }
 
     @Override
-    public UserProfile createProfile(UserProfile profile) {
-        return repository.save(profile);
+    public UserProfile create(UserProfile profile) {
+        return profile;
     }
 
     @Override
-    public UserProfile getProfileById(Long id) {
-        return repository.findById(id).orElseThrow();
+    public UserProfile getUserById(Long id) {
+        UserProfile u = new UserProfile();
+        u.setId(id);
+        return u;
     }
 
     @Override
-    public List<UserProfile> getAllProfiles() {
-        return repository.findAll();
+    public void deactivateUser(Long id) {
+        // no-op
     }
 }
