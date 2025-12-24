@@ -2,8 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.model.UserProfile;
 import com.example.demo.service.UserProfileService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -16,22 +17,22 @@ public class UserProfileController {
     }
 
     @PostMapping
-    public ResponseEntity<UserProfile> create(@RequestBody UserProfile profile) {
-        return ResponseEntity.ok(service.createUser(profile));
+    public UserProfile create(@RequestBody UserProfile user) {
+        return service.createUser(user);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserProfile> get(@PathVariable Long id) {
-        return ResponseEntity.ok(service.getUser(id));
+    public UserProfile get(@PathVariable Long id) {
+        return service.getUser(id);
     }
 
-    // Required by hidden tests
-    public ResponseEntity<UserProfile> getUserById(Long id) {
-        return ResponseEntity.ok(service.getUserById(id));
+    @GetMapping
+    public List<UserProfile> getAll() {
+        return service.getAllUsers();
     }
 
-    public ResponseEntity<Void> deactivate(Long id) {
+    @DeleteMapping("/{id}")
+    public void deactivate(@PathVariable Long id) {
         service.deactivateUser(id);
-        return ResponseEntity.ok().build();
     }
 }
