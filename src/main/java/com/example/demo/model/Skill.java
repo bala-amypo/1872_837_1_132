@@ -1,3 +1,7 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "skills")
 public class Skill {
@@ -6,63 +10,68 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // 👇 TEST EXPECTS THIS FIELD
-    private String body;
-
+    private String name;
     private String category;
     private String experienceLevel;
-    private boolean active = true;
+    private String urgencyLevel;
+    private boolean active;
     private String status;
 
     public Skill() {}
 
-    // ===== REQUIRED GETTERS =====
     public Long getId() {
         return id;
     }
 
-    public String getBody() {
-        return body;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCategory() {
         return category;
     }
 
-    public String getExperienceLevel() {
-        return experienceLevel;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    // ===== SETTERS =====
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getExperienceLevel() {
+        return experienceLevel;
     }
 
     public void setExperienceLevel(String experienceLevel) {
         this.experienceLevel = experienceLevel;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public String getUrgencyLevel() {
+        return urgencyLevel;
+    }
+
+    public void setUrgencyLevel(String urgencyLevel) {
+        this.urgencyLevel = urgencyLevel;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
