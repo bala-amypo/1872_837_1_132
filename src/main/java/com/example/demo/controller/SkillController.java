@@ -26,13 +26,15 @@ public class SkillController {
         return skillService.get(id);
     }
 
+    // ✅ FIX 1
     @PutMapping("/{id}")
     public Skill update(@PathVariable Long id, @RequestBody Skill skill) {
-        return skillService.update(id, skill);
+        return skillService.updateSkill(id, skill);
     }
 
+    // ✅ FIX 2
     @GetMapping
     public List<Skill> getAll() {
-        return skillService.getAll();
+        return skillService.getAllSkills();
     }
 }

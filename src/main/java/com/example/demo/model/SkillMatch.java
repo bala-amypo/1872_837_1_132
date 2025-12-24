@@ -29,4 +29,13 @@ public class SkillMatch {
     public void setRequest(SkillRequest request) { this.request = request; }
     public void setSkill(Skill skill) { this.skill = skill; }
     public void setMatchStatus(String matchStatus) { this.matchStatus = matchStatus; }
+    // Alias for service compatibility
+public void setStatus(String status) {
+    this.matchStatus = status;
+}
+
+public String getStatus() {
+    return this.matchStatus;
+}
+
 }
