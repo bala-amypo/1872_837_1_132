@@ -20,4 +20,8 @@ public class UserProfileServiceImpl implements UserProfileService {
     public void deactivateUser(Long id) {
         // no-op
     }
+    @Override
+public ResponseEntity<UserProfile> getUserById(Long id) {
+    return ResponseEntity.ok(new UserProfile());
+}
 }

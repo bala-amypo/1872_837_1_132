@@ -10,4 +10,6 @@ public interface UserProfileService {
     ResponseEntity<UserProfile> getUser(Long id);
 
     void deactivateUser(Long id);
+    ResponseEntity<UserProfile> getUserById(Long id);
+
 }
