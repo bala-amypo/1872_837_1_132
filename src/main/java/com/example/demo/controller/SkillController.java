@@ -15,16 +15,16 @@ public class SkillController {
     public SkillController(SkillService skillService) {
         this.skillService = skillService;
     }
+@PostMapping
+public Skill createSkill(@RequestBody Skill skill) {
+    return skillService.createSkill(skill);
+}
 
-    @PostMapping
-    public Skill create(@RequestBody Skill skill) {
-        return skillService.create(skill);
-    }
+@GetMapping("/{id}")
+public Skill getSkillById(@PathVariable Long id) {
+    return skillService.getSkillById(id);
+}
 
-    @GetMapping("/{id}")
-    public Skill get(@PathVariable Long id) {
-        return skillService.get(id);
-    }
 
     // ✅ FIX 1
     @PutMapping("/{id}")
