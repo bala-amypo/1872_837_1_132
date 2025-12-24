@@ -10,39 +10,32 @@ import java.util.List;
 @Service
 public class SkillServiceImpl implements SkillService {
 
-    private final SkillRepository skillRepository;
+    private final SkillRepository repository;
 
-    public SkillServiceImpl(SkillRepository skillRepository) {
-        this.skillRepository = skillRepository;
+    public SkillServiceImpl(SkillRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public Skill createSkill(Skill skill) {
-        return skillRepository.save(skill);
+        return repository.save(skill);
     }
 
     @Override
     public Skill getSkillById(Long id) {
-        return skillRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Skill not found"));
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Skill not found"));
     }
 
     @Override
     public Skill updateSkill(Long id, Skill skill) {
         Skill existing = getSkillById(id);
-
         existing.setName(skill.getName());
-        existing.setCategory(skill.getCategory());
-        existing.setExperienceLevel(skill.getExperienceLevel());
-        existing.setUrgencyLevel(skill.getUrgencyLevel());
-        existing.setActive(skill.isActive());
-        existing.setStatus(skill.getStatus());
-
-        return skillRepository.save(existing);
+        return repository.save(existing);
     }
 
     @Override
     public List<Skill> getAllSkills() {
-        return skillRepository.findAll();
+        return repository.findAll();
     }
 }

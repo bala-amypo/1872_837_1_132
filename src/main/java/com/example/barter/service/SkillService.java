@@ -3,14 +3,13 @@ package com.example.barter.service;
 import com.example.barter.model.Skill;
 import java.util.List;
 
-package com.example.barter.service;
-
-import com.example.barter.model.Skill;
-import java.util.List;
-
 public interface SkillService {
 
-    Skill getById(Long id);
+    Skill createSkill(Skill skill);
 
-    List<Skill> getAll();
+    Skill getSkillById(Long id);
+
+    Skill updateSkill(Long id, Skill skill);
+
+    List<Skill> getAllSkills();
 }
