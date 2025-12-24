@@ -11,35 +11,55 @@ public class SkillMatch {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "offer_id")
-    private SkillOffer offer;
+    private Skill skill;
 
     @ManyToOne
-    @JoinColumn(name = "request_id")
     private SkillRequest request;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
     private UserProfile matchedBy;
 
-    private String matchStatus = "PENDING";
-    private double matchScore = 0.0;
+    private String status;
 
     public SkillMatch() {}
 
-    // 🔥 ADD THIS
-    public SkillMatch(SkillOffer offer, SkillRequest request, UserProfile matchedBy) {
-        this.offer = offer;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Skill getSkill() {
+        return skill;
+    }
+
+    public void setSkill(Skill skill) {
+        this.skill = skill;
+    }
+
+    public SkillRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(SkillRequest request) {
         this.request = request;
+    }
+
+    public UserProfile getMatchedBy() {
+        return matchedBy;
+    }
+
+    public void setMatchedBy(UserProfile matchedBy) {
         this.matchedBy = matchedBy;
     }
 
-    // getters & setters
-    public Long getId() { return id; }
+    public String getStatus() {
+        return status;
+    }
 
-    public String getMatchStatus() { return matchStatus; }
-    public void setMatchStatus(String matchStatus) { this.matchStatus = matchStatus; }
-
-    public double getMatchScore() { return matchScore; }
-    public void setMatchScore(double matchScore) { this.matchScore = matchScore; }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
