@@ -35,8 +35,8 @@ public ResponseEntity<UserProfile> getUserById(Long id) {
     return service.getUser(id);
 }
 
-public ResponseEntity<UserProfile> get(Long id) {
-    return service.getUser(id);
-}
+// public ResponseEntity<UserProfile> get(Long id) {
+//     return service.getUser(id);
+// }
 
 }
