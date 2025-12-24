@@ -38,8 +38,9 @@ public ResponseEntity<UserProfile> getUserById(Long id) {
 // public ResponseEntity<UserProfile> get(Long id) {
 //     return service.getUser(id);
 // }
-public void deactivate(Long id) {
+public ResponseEntity<Void> deactivate(Long id) {
     service.deactivateUser(id);
+    return ResponseEntity.ok().build();
 }
 
 

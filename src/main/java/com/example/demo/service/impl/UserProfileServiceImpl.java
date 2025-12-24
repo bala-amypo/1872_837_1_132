@@ -6,11 +6,10 @@ import org.springframework.http.ResponseEntity;
 
 public class UserProfileServiceImpl implements UserProfileService {
 
-    @Override
-    public ResponseEntity<UserProfile> createUser(Object obj) {
-        return ResponseEntity.ok(new UserProfile());
-    }
-
+@Override
+public ResponseEntity<UserProfile> createUser(UserProfile profile) {
+    return ResponseEntity.ok(profile);
+}
     @Override
     public ResponseEntity<UserProfile> getUser(Long id) {
         return ResponseEntity.ok(new UserProfile());
