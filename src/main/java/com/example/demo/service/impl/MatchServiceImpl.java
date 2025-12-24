@@ -20,7 +20,7 @@ public class MatchServiceImpl implements MatchService {
     @Override
     public SkillMatch createMatch(Long requestId, Long offerId, Long userId) {
         SkillMatch match = new SkillMatch();
-        match.setStatus("CREATED");
+        match.setMatchStatus("CREATED");
         return matchRepository.save(match);
     }
 

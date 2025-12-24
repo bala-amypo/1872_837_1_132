@@ -32,7 +32,7 @@ public class SkillController {
     }
 
     @GetMapping
-    public List<Skill> list() {
+    public List<Skill> getAll() {
         return skillService.getAll();
     }
 }
