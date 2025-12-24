@@ -5,11 +5,11 @@ import java.util.List;
 
 public interface SkillService {
 
-    Skill create(Skill skill);
+    Skill createSkill(Skill skill);
 
-    Skill get(Long id);
+    Skill getSkillById(Long id);
 
-    Skill update(Long id, Skill skill);
+    Skill updateSkill(Long id, Skill skill);
 
-    List<Skill> getAll();
+    List<Skill> getAllSkills();
 }

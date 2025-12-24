@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.model.Skill;
 import com.example.demo.repository.SkillRepository;
 import com.example.demo.service.SkillService;
+import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,30 +11,39 @@ import java.util.List;
 @Service
 public class SkillServiceImpl implements SkillService {
 
-    private final SkillRepository repository;
+    private final SkillRepository skillRepository;
 
-    public SkillServiceImpl(SkillRepository repository) {
-        this.repository = repository;
+    public SkillServiceImpl(SkillRepository skillRepository) {
+        this.skillRepository = skillRepository;
     }
 
     @Override
-    public Skill create(Skill skill) {
-        return repository.save(skill);
+    public Skill createSkill(Skill skill) {
+        return skillRepository.save(skill);
     }
 
     @Override
-    public Skill get(Long id) {
-        return repository.findById(id).orElse(null);
+    public Skill getSkillById(Long id) {
+        return skillRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Skill not found"));
     }
 
     @Override
-    public Skill updateSkill(Long id, Object obj) {
-        Skill skill = repository.findById(id).orElse(null);
-        return skill;
+    public Skill updateSkill(Long id, Skill skill) {
+        Skill existing = getSkillById(id);
+
+        existing.setName(skill.getName());
+        existing.setCategory(skill.getCategory());
+        existing.setExperienceLevel(skill.getExperienceLevel());
+        existing.setUrgencyLevel(skill.getUrgencyLevel());
+        existing.setActive(skill.isActive());
+        existing.setStatus(skill.getStatus());
+
+        return skillRepository.save(existing);
     }
 
     @Override
     public List<Skill> getAllSkills() {
-        return repository.findAll();
+        return skillRepository.findAll();
     }
 }
