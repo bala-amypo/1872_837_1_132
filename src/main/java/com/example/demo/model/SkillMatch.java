@@ -3,7 +3,6 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "skill_matches")
 public class SkillMatch {
 
     @Id
@@ -11,7 +10,7 @@ public class SkillMatch {
     private Long id;
 
     @ManyToOne
-    private Skill skill;
+    private SkillOffer offer;
 
     @ManyToOne
     private SkillRequest request;
@@ -21,22 +20,30 @@ public class SkillMatch {
 
     private String status;
 
-    public SkillMatch() {}
+    private Double matchScore;
+
+    public SkillMatch() {
+    }
+
+    public SkillMatch(SkillOffer offer, SkillRequest request, UserProfile matchedBy) {
+        this.offer = offer;
+        this.request = request;
+        this.matchedBy = matchedBy;
+        this.status = "PENDING";
+    }
+
+    /* ===== GETTERS & SETTERS ===== */
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public SkillOffer getOffer() {
+        return offer;
     }
 
-    public Skill getSkill() {
-        return skill;
-    }
-
-    public void setSkill(Skill skill) {
-        this.skill = skill;
+    public void setOffer(SkillOffer offer) {
+        this.offer = offer;
     }
 
     public SkillRequest getRequest() {
@@ -55,6 +62,14 @@ public class SkillMatch {
         this.matchedBy = matchedBy;
     }
 
+    public Double getMatchScore() {
+        return matchScore;
+    }
+
+    public void setMatchScore(Double matchScore) {
+        this.matchScore = matchScore;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -62,8 +77,10 @@ public class SkillMatch {
     public void setStatus(String status) {
         this.status = status;
     }
-    public String getMatchStatus() {
-    return status;
-}
 
+    /* ===== REQUIRED FOR YOUR ERROR FIX ===== */
+
+    public String getMatchStatus() {
+        return status;
+    }
 }
