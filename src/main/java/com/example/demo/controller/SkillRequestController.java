@@ -2,10 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.SkillRequest;
 import com.example.demo.service.SkillRequestService;
-
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.ResponseEntity;
-
 
 import java.util.List;
 
@@ -19,40 +16,18 @@ public class SkillRequestController {
         this.service = service;
     }
 
-    // CREATE
     @PostMapping
     public SkillRequest create(@RequestBody SkillRequest request) {
-        return service.createRequest(request);
+        return service.create(request);
     }
 
-    // READ by ID
     @GetMapping("/{id}")
     public SkillRequest get(@PathVariable Long id) {
-        return service.getRequest(id);
+        return service.get(id);
     }
 
-    // READ OPEN
-    @GetMapping("/open")
-    public List<SkillRequest> getOpen() {
-        return service.getOpenRequests();
+    @GetMapping
+    public List<SkillRequest> list() {
+        return service.getAll();
     }
-
-    // UPDATE
-    @PutMapping("/{id}/status")
-    public SkillRequest updateStatus(
-            @PathVariable Long id,
-            @RequestParam String status) {
-
-        SkillRequest req = service.getRequest(id);
-        req.setStatus(status);
-        return service.createRequest(req);
-    }
-
-    // DELETE
-@DeleteMapping("/{id}")
-public ResponseEntity<String> delete(@PathVariable Long id) {
-    service.deleteRequest(id);
-    return ResponseEntity.ok("Skill request deleted successfully");
-}
-
 }

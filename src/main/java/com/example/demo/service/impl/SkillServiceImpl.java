@@ -27,7 +27,13 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public List<Skill> getAllSkills() {
+    public Skill update(Long id, Skill skill) {
+        skill.setId(id);
+        return skillRepository.save(skill);
+    }
+
+    @Override
+    public List<Skill> getAll() {
         return skillRepository.findAll();
     }
 }

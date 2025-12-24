@@ -8,8 +8,5 @@ public interface SkillRequestRepository extends JpaRepository<SkillRequest, Long
 
     List<SkillRequest> findByUserId(Long userId);
 
-    List<SkillRequest> findBySkillCategoryId(Long categoryId);
-
     List<SkillRequest> findByActiveTrue();
 }
-

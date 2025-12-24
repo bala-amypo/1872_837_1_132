@@ -1,21 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.model.SkillRequest;
-import java.util.List;   // ✅ ADD THIS LINE
+import java.util.List;
 
 public interface SkillRequestService {
 
-    SkillRequest createRequest(SkillRequest request);
+    SkillRequest create(SkillRequest request);
 
-    SkillRequest getRequest(Long id);
+    SkillRequest get(Long id);
 
-    List<SkillRequest> getRequestsByUser(Long userId);
+    List<SkillRequest> getAll();
 
-    List<SkillRequest> getRequestsByCategory(Long categoryId);
-
-    List<SkillRequest> getOpenRequests();
-
-    void deleteRequest(Long id);
-
-    SkillRequest getRequestById(Long id);
+    List<SkillRequest> getByUser(Long userId);
 }
