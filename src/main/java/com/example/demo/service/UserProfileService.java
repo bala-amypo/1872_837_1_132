@@ -7,7 +7,8 @@ public interface UserProfileService {
 
     ResponseEntity<UserProfile> createUser(Object obj);
 
-    ResponseEntity<UserProfile> getUser(Long id);
+    ResponseEntity<UserProfile> createUser(UserProfile profile);
+
 
     void deactivateUser(Long id);
     ResponseEntity<UserProfile> getUserById(Long id);
