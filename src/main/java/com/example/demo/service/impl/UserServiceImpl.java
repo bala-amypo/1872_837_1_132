@@ -1,55 +1,33 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.model.User;
-import com.example.demo.repository.UserRepository;
-import com.example.demo.service.UserService;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import com.example.demo.model.UserProfile;
+import com.example.demo.repository.UserProfileRepository;
+import com.example.demo.service.UserProfileService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserProfileServiceImpl implements UserProfileService {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final UserProfileRepository repository;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+    public UserProfileServiceImpl(UserProfileRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public User register(User user) {
-        if (userRepository.existsByEmail(user.getEmail())) {
-            throw new IllegalArgumentException("Email already in use");
-        }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
+    public UserProfile create(UserProfile user) {
+        return repository.save(user);
     }
 
     @Override
-    public User getById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+    public UserProfile get(Long id) {
+        return repository.findById(id).orElse(null);
     }
 
     @Override
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-    }
-
-    @Override
-    public User updateRating(Long userId, double newRating) {
-        User user = getById(userId);
-        user.setRating(newRating);
-        return userRepository.save(user);
-    }
-
-    @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserProfile> getAll() {
+        return repository.findAll();
     }
 }

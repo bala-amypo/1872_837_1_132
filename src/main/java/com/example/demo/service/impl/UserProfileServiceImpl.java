@@ -1,27 +1,33 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.UserProfile;
+import com.example.demo.repository.UserProfileRepository;
 import com.example.demo.service.UserProfileService;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class UserProfileServiceImpl implements UserProfileService {
 
-    @Override
-    public UserProfile createUser(UserProfile profile) {
-        return profile;
+    private final UserProfileRepository repository;
+
+    public UserProfileServiceImpl(UserProfileRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public UserProfile getUser(Long id) {
-        return new UserProfile();
+    public UserProfile create(UserProfile user) {
+        return repository.save(user);
     }
 
     @Override
-    public UserProfile getUserById(Long id) {
-        return new UserProfile();
+    public UserProfile get(Long id) {
+        return repository.findById(id).orElse(null);
     }
 
     @Override
-    public void deactivateUser(Long id) {
-        // no-op
+    public List<UserProfile> getAll() {
+        return repository.findAll();
     }
 }
