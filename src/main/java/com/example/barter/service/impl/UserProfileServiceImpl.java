@@ -23,8 +23,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public UserProfile getProfileById(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Profile not found"));
+        return repository.findById(id).orElseThrow();
     }
 
     @Override
