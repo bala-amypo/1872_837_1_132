@@ -3,11 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.model.Skill;
 import com.example.demo.service.SkillService;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
-
-
 
 import java.util.List;
 
@@ -25,11 +22,9 @@ public class SkillController {
         return skillService.update(id, skill);
     }
     
-@GetMapping
-public ResponseEntity<List<Skill>> list() {
-    return ResponseEntity.ok(service.getAllSkills());
-}
-
+    public ResponseEntity<List<Skill>> list() {
+        return ResponseEntity.ok(skillService.getAllSkills());
+    }
 
 
 }
