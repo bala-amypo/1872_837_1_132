@@ -1,7 +1,6 @@
 package com.example.barter.service;
 
 import com.example.barter.model.SkillMatch;
-
 import java.util.List;
 
 public interface MatchService {
@@ -13,7 +12,4 @@ public interface MatchService {
     SkillMatch getMatchById(Long matchId);
 
     List<SkillMatch> getAllMatches();
-
-    // Required by compiler (even if logic is simple)
-    List<SkillMatch> getMatchesByRequest(Long requestId);
 }

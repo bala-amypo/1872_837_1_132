@@ -2,8 +2,6 @@ package com.example.barter.controller;
 
 import com.example.barter.model.SkillMatch;
 import com.example.barter.service.MatchService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,40 +16,29 @@ public class MatchController {
         this.matchService = matchService;
     }
 
+    // ✅ CREATE MATCH (FIXED)
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<SkillMatch> create(@RequestParam Long offerId,
-                                             @RequestParam Long requestId,
-                                             @RequestParam Long adminUserId) {
-        return ResponseEntity.ok(
-                matchService.createMatch(offerId, requestId, adminUserId)
-        );
+    public SkillMatch createMatch(@RequestBody SkillMatch match) {
+        return matchService.createMatch(match);
     }
 
-    @GetMapping
-    public ResponseEntity<List<SkillMatch>> getAll() {
-        return ResponseEntity.ok(matchService.getAllMatches());
-    }
-
+    // ✅ GET MATCH BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<SkillMatch> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(matchService.getMatch(id));
+    public SkillMatch getMatchById(@PathVariable Long id) {
+        return matchService.getMatchById(id);
     }
 
+    // ✅ GET ALL MATCHES
+    @GetMapping
+    public List<SkillMatch> getAllMatches() {
+        return matchService.getAllMatches();
+    }
+
+    // ✅ UPDATE STATUS
     @PutMapping("/{id}/status")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<SkillMatch> updateStatus(@PathVariable Long id,
-                                                   @RequestParam String status) {
-        return ResponseEntity.ok(matchService.updateMatchStatus(id, status));
-    }
-
-    @GetMapping("/offer/{offerId}")
-    public ResponseEntity<List<SkillMatch>> byOffer(@PathVariable Long offerId) {
-        return ResponseEntity.ok(matchService.getMatchesByOffer(offerId));
-    }
-
-    @GetMapping("/request/{requestId}")
-    public ResponseEntity<List<SkillMatch>> byRequest(@PathVariable Long requestId) {
-        return ResponseEntity.ok(matchService.getMatchesByRequest(requestId));
+    public SkillMatch updateStatus(
+            @PathVariable Long id,
+            @RequestParam String status) {
+        return matchService.updateMatchStatus(id, status);
     }
 }
