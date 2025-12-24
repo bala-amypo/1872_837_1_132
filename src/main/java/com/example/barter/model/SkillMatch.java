@@ -9,14 +9,11 @@ public class SkillMatch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Status of the match (PENDING, ACCEPTED, COMPLETED, etc.)
     private String matchStatus;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
-
-    public SkillMatch() {}
+    private User matchedBy;
 
     public Long getId() {
         return id;
@@ -30,16 +27,11 @@ public class SkillMatch {
         this.matchStatus = matchStatus;
     }
 
-    // Optional alias if some service uses setStatus()
-    public void setStatus(String status) {
-        this.matchStatus = status;
+    public User getMatchedBy() {
+        return matchedBy;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setMatchedBy(User matchedBy) {
+        this.matchedBy = matchedBy;
     }
 }
