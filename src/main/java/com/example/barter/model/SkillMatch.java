@@ -15,6 +15,9 @@ public class SkillMatch {
     @JoinColumn(name = "user_id")
     private User matchedBy;
 
+    public SkillMatch() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -25,6 +28,11 @@ public class SkillMatch {
 
     public void setMatchStatus(String matchStatus) {
         this.matchStatus = matchStatus;
+    }
+
+    // Alias used by MatchServiceImpl
+    public void setStatus(String status) {
+        this.matchStatus = status;
     }
 
     public User getMatchedBy() {
