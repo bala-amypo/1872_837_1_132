@@ -26,6 +26,9 @@ public class SkillRequest {
     @ManyToOne
     private UserProfile user;
 
+
+
+
     /* ===== REQUIRED GETTERS / SETTERS ===== */
 
     public Long getId() {
