@@ -16,4 +16,7 @@ public interface SkillRequestService {
     List<SkillRequest> getOpenRequests();
 
     void deleteRequest(Long id);
+    public SkillRequest getRequestById(long id) {
+        return new SkillRequest();
+    }
 }

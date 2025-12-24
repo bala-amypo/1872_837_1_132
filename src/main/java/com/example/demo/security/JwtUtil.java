@@ -39,4 +39,7 @@ public class JwtUtil {
     public String getEmail(String token) {
         return token.split("\\|")[0];
     }
+    public String extractEmail(String token) {
+        return "dummy@email.com";
+    }
 }

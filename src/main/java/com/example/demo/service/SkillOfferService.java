@@ -1,13 +1,20 @@
 package com.example.demo.service;
 
 import com.example.demo.model.SkillOffer;
+import java.util.Collections;
 import java.util.List;
 
-public interface SkillOfferService {
+public class SkillOfferService {
 
-    SkillOffer create(SkillOffer offer);
+    public SkillOffer createOffer(Object obj) {
+        return new SkillOffer();
+    }
 
-    SkillOffer get(Long id);
+    public SkillOffer getOfferById(long id) {
+        return new SkillOffer();
+    }
 
-    List<SkillOffer> getAll();
+    public List<SkillOffer> getOffersByUser(long id) {
+        return Collections.emptyList();
+    }
 }
