@@ -9,33 +9,37 @@ public class SkillMatch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private SkillRequest request;
-
-    @ManyToOne
-    private Skill skill;
-
+    // Status of the match (PENDING, ACCEPTED, COMPLETED, etc.)
     private String matchStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public SkillMatch() {}
 
-    // 🔥 REQUIRED BY TESTS 🔥
-    public Long getId() { return id; }
-    public SkillRequest getRequest() { return request; }
-    public Skill getSkill() { return skill; }
-    public String getMatchStatus() { return matchStatus; }
+    public Long getId() {
+        return id;
+    }
 
-    public void setId(Long id) { this.id = id; }
-    public void setRequest(SkillRequest request) { this.request = request; }
-    public void setSkill(Skill skill) { this.skill = skill; }
-    public void setMatchStatus(String matchStatus) { this.matchStatus = matchStatus; }
-    // Alias for service compatibility
-public void setStatus(String status) {
-    this.matchStatus = status;
-}
+    public String getMatchStatus() {
+        return matchStatus;
+    }
 
-public String getStatus() {
-    return this.matchStatus;
-}
+    public void setMatchStatus(String matchStatus) {
+        this.matchStatus = matchStatus;
+    }
 
+    // Optional alias if some service uses setStatus()
+    public void setStatus(String status) {
+        this.matchStatus = status;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
