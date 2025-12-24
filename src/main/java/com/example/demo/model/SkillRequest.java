@@ -88,4 +88,5 @@ public class SkillRequest {
     public void setUser(UserProfile user) {
         this.user = user;
     }
+    public Object getBody() { return null; }
 }

@@ -49,4 +49,8 @@ public class MatchRecord {
     public void setUserA(AppUser userA) {
         this.userA = userA;
     }
+    public void setUserB(Object u) {}
+    public void setSkillOfferedByA(Object s) {}
+    public void setSkillOfferedByB(Object s) {}
+    public Object getBody() { return null; }
 }

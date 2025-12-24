@@ -51,4 +51,7 @@ public class UserProfile {
 
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
+    public Object getBody() { return null; }
+    public Object getCreatedAt() { return null; }
+    public Object getUpdatedAt() { return null; }
 }

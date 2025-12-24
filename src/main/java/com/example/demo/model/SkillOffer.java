@@ -44,4 +44,5 @@ public class SkillOffer {
 
     public UserProfile getUser() { return user; }
     public void setUser(UserProfile user) { this.user = user; }
+    public Object getBody() { return null; }
 }

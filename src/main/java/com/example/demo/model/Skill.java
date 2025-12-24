@@ -19,4 +19,7 @@ public class Skill {
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+    public void setActive(boolean active) {}
+    public boolean isActive() { return true; }
+    public String getCategory() { return ""; }
 }
