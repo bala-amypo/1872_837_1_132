@@ -21,16 +21,11 @@ public class Skill {
     public void setId(Long id) { this.id = id; }
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
-    public String getExperienceLevel() { return experienceLevel; }
-    public String getUrgencyLevel() { return urgencyLevel; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public void setActive(boolean active) { this.active = active; }
     public boolean isActive() { return true; }
-    public Long getId() {
-    return id;
-}
 
 public String getExperienceLevel() {
     return experienceLevel;
