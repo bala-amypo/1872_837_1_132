@@ -5,6 +5,8 @@ import com.example.demo.service.SkillService;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
+
 
 public class SkillServiceImpl implements SkillService {
 
