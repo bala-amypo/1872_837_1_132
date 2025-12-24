@@ -20,6 +20,9 @@ public class SkillRequest {
     @ManyToOne
     private UserProfile user;
 
+    public SkillRequest() {}
+
+    // REQUIRED BY TESTS
     public Long getId() { return id; }
     public String getSkillName() { return skillName; }
     public String getUrgencyLevel() { return urgencyLevel; }
@@ -35,7 +38,4 @@ public class SkillRequest {
     public void setActive(boolean active) { this.active = active; }
     public void setSkill(Skill skill) { this.skill = skill; }
     public void setUser(UserProfile user) { this.user = user; }
-
-    // REQUIRED BY TEST
-    public Object getBody() { return this; }
 }

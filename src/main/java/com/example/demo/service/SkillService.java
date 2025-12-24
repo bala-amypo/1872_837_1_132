@@ -9,7 +9,7 @@ public interface SkillService {
 
     Skill get(Long id);
 
-    Skill update(Long id, Skill skill);
+    Skill updateSkill(Long id, Object skill);
 
-    List<Skill> getAll();
+    List<Skill> getAllSkills();
 }

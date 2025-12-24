@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "skills")
 public class Skill {
 
     @Id
@@ -16,6 +17,9 @@ public class Skill {
     private boolean active;
     private String status;
 
+    public Skill() {}
+
+    // REQUIRED BY TESTS
     public Long getId() { return id; }
     public String getName() { return name; }
     public String getCategory() { return category; }

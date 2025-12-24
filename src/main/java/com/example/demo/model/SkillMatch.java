@@ -9,29 +9,24 @@ public class SkillMatch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String matchStatus;
+    @ManyToOne
+    private SkillRequest request;
 
     @ManyToOne
     private Skill skill;
 
-    @ManyToOne
-    private SkillRequest request;
+    private String matchStatus;
 
+    public SkillMatch() {}
+
+    // 🔥 REQUIRED BY TESTS 🔥
     public Long getId() { return id; }
-    public String getMatchStatus() { return matchStatus; }
-    public Skill getSkill() { return skill; }
     public SkillRequest getRequest() { return request; }
+    public Skill getSkill() { return skill; }
+    public String getMatchStatus() { return matchStatus; }
 
     public void setId(Long id) { this.id = id; }
-    public void setMatchStatus(String matchStatus) { this.matchStatus = matchStatus; }
-    public void setSkill(Skill skill) { this.skill = skill; }
     public void setRequest(SkillRequest request) { this.request = request; }
-    public void setStatus(String status) {
-    this.matchStatus = status;
-}
-
-public String getStatus() {
-    return this.matchStatus;
-}
-
+    public void setSkill(Skill skill) { this.skill = skill; }
+    public void setMatchStatus(String matchStatus) { this.matchStatus = matchStatus; }
 }
