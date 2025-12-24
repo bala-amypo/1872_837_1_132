@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 import java.sql.Timestamp;
 
 @Entity
@@ -12,31 +11,30 @@ public class UserProfile extends AppUser {
     private String email;
     private boolean active = true;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-    public UserProfile() {
-    }
+    public UserProfile() {}
 
-    // Constructor used by services/tests
     public UserProfile(Long id, String username, String email) {
-        this.setId(id);   // inherited from AppUser
+        this.setId(id);
         this.username = username;
         this.email = email;
     }
 
     @PrePersist
     protected void onCreate() {
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = this.createdAt;
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        this.createdAt = now;
+        this.updatedAt = now;
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.updatedAt = LocalDateTime.now();
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
-    // ----------- Getters & Setters -----------
+    // ---------- getters & setters ----------
 
     public String getUsername() {
         return username;
@@ -62,30 +60,20 @@ public class UserProfile extends AppUser {
         this.active = active;
     }
 
-    // ⚠️ DO NOT use @Override unless AppUser defines this EXACT method
-    public LocalDateTime getCreatedAt() {
+    @Override
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    // ----------- Adapter methods (FOR PORTAL TESTS) -----------
-
-    public Timestamp getCreatedAtTimestamp() {
-        return createdAt == null ? null : Timestamp.valueOf(createdAt);
-    }
-
-    public Timestamp getUpdatedAtTimestamp() {
-        return updatedAt == null ? null : Timestamp.valueOf(updatedAt);
     }
 }

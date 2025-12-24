@@ -15,11 +15,10 @@ public class Skill {
     private String experienceLevel;
     private String urgencyLevel;
     private boolean active;
+    private String status;
 
-    public Skill() {
-    }
+    public Skill() {}
 
-    // ---------- ID ----------
     public Long getId() {
         return id;
     }
@@ -28,17 +27,14 @@ public class Skill {
         this.id = id;
     }
 
-    // ---------- NAME ----------
     public String getName() {
         return name;
     }
-
 
     public void setName(String name) {
         this.name = name;
     }
 
-    // ---------- CATEGORY ----------
     public String getCategory() {
         return category;
     }
@@ -47,7 +43,6 @@ public class Skill {
         this.category = category;
     }
 
-    // ---------- EXPERIENCE LEVEL ----------
     public String getExperienceLevel() {
         return experienceLevel;
     }
@@ -56,7 +51,6 @@ public class Skill {
         this.experienceLevel = experienceLevel;
     }
 
-    // ---------- URGENCY LEVEL ----------
     public String getUrgencyLevel() {
         return urgencyLevel;
     }
@@ -65,7 +59,6 @@ public class Skill {
         this.urgencyLevel = urgencyLevel;
     }
 
-    // ---------- ACTIVE ----------
     public boolean isActive() {
         return active;
     }
@@ -74,8 +67,11 @@ public class Skill {
         this.active = active;
     }
 
-    // ---------- REQUIRED FOR PORTAL TESTS ----------
-    public Object getBody() {
-        return this;
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
