@@ -5,6 +5,10 @@ import java.util.List;
 
 public interface MatchService {
 
+    SkillMatch createMatch(Long requestId, Long offerId, Long userId);
+
+    SkillMatch updateMatchStatus(Long matchId, String status);
+
     SkillMatch getMatch(Long id);
 
     List<SkillMatch> getAllMatches();

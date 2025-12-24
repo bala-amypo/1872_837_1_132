@@ -18,6 +18,22 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
+    public SkillMatch createMatch(Long requestId, Long offerId, Long userId) {
+        SkillMatch match = new SkillMatch();
+        match.setStatus("CREATED");
+        return matchRepository.save(match);
+    }
+
+    @Override
+    public SkillMatch updateMatchStatus(Long matchId, String status) {
+        SkillMatch match = matchRepository.findById(matchId)
+                .orElseThrow(() -> new ResourceNotFoundException("Match not found"));
+
+        match.setStatus(status);
+        return matchRepository.save(match);
+    }
+
+    @Override
     public SkillMatch getMatch(Long id) {
         return matchRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Match not found"));
