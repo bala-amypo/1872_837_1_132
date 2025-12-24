@@ -1,3 +1,7 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+
 @Entity
 public class SkillRequest {
 
@@ -16,6 +20,9 @@ public class SkillRequest {
     @ManyToOne
     private UserProfile user;
 
+    public SkillRequest() {}
+
+    // REQUIRED BY TESTS
     public Long getId() { return id; }
     public String getSkillName() { return skillName; }
     public String getUrgencyLevel() { return urgencyLevel; }
