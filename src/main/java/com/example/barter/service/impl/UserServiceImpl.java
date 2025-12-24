@@ -1,34 +1,34 @@
 package com.example.barter.service.impl;
 
-import com.example.barter.model.UserProfile;
-import com.example.barter.repository.UserProfileRepository;
-import com.example.barter.service.UserProfileService;
+import com.example.barter.model.User;
+import com.example.barter.repository.UserRepository;
+import com.example.barter.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service   // ⭐ THIS IS MANDATORY
-public class UserProfileServiceImpl implements UserProfileService {
+@Service
+public class UserServiceImpl implements UserService {
 
-    private final UserProfileRepository userProfileRepository;
+    private final UserRepository userRepository;
 
-    public UserProfileServiceImpl(UserProfileRepository userProfileRepository) {
-        this.userProfileRepository = userProfileRepository;
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
-    public UserProfile createProfile(UserProfile profile) {
-        return userProfileRepository.save(profile);
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
 
     @Override
-    public UserProfile getProfileById(Long id) {
-        return userProfileRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("UserProfile not found"));
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
     @Override
-    public List<UserProfile> getAllProfiles() {
-        return userProfileRepository.findAll();
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }
