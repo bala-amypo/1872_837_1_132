@@ -1,4 +1,4 @@
-package com.example.demo.servlet;
+package com.example.barter.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.example.barter.controller;
 
-import com.example.demo.model.Skill;
-import com.example.demo.service.SkillService;
+import com.example.barter.model.Skill;
+import com.example.barter.service.SkillService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

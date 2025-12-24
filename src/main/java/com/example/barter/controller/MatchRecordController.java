@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.example.barter.controller;
 
-import com.example.demo.model.MatchRecord;
-import com.example.demo.service.MatchmakingService;
+import com.example.barter.model.MatchRecord;
+import com.example.barter.service.MatchmakingService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package com.example.barter.dto;
 
 public class LoginResponse {
     private String token;

@@ -1,8 +1,8 @@
-package com.example.demo.controller;
+package com.example.barter.controller;
 
-import com.example.demo.dto.LoginRequest;
-import com.example.demo.dto.LoginResponse;
-import com.example.demo.security.JwtUtil;
+import com.example.barter.dto.LoginRequest;
+import com.example.barter.dto.LoginResponse;
+import com.example.barter.security.JwtUtil;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

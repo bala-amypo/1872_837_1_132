@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.example.barter.controller;
 
-import com.example.demo.model.SkillMatch;
-import com.example.demo.service.MatchService;
+import com.example.barter.model.SkillMatch;
+import com.example.barter.service.MatchService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

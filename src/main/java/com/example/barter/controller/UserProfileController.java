@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.example.barter.controller;
 
-import com.example.demo.model.UserProfile;
-import com.example.demo.service.UserProfileService;
+import com.example.barter.model.UserProfile;
+import com.example.barter.service.UserProfileService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.example.demo.service.impl;
+package com.example.barter.service.impl;
 
-import com.example.demo.model.SkillOffer;
-import com.example.demo.service.SkillOfferService;
+import com.example.barter.model.SkillOffer;
+import com.example.barter.service.SkillOfferService;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.example.demo.security;
+package com.example.barter.security;
 
-import com.example.demo.model.UserProfile;
-import com.example.demo.repository.UserRepository;
+import com.example.barter.model.UserProfile;
+import com.example.barter.repository.UserRepository;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 

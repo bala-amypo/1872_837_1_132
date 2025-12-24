@@ -1,7 +1,7 @@
-package com.example.demo.service.impl;
+package com.example.barter.service.impl;
 
-import com.example.demo.model.MatchRecord;
-import com.example.demo.service.MatchmakingService;
+import com.example.barter.model.MatchRecord;
+import com.example.barter.service.MatchmakingService;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;

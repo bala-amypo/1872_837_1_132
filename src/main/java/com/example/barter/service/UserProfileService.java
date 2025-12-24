@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.example.barter.service;
 
-import com.example.demo.model.UserProfile;
+import com.example.barter.model.UserProfile;
 import java.util.List;
 
 public interface UserProfileService {
