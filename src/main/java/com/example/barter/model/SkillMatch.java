@@ -15,8 +15,7 @@ public class SkillMatch {
     @JoinColumn(name = "user_id")
     private User matchedBy;
 
-    public SkillMatch() {
-    }
+    public SkillMatch() {}
 
     public Long getId() {
         return id;
@@ -30,7 +29,7 @@ public class SkillMatch {
         this.matchStatus = matchStatus;
     }
 
-    // Alias used by MatchServiceImpl
+    // Used by MatchServiceImpl
     public void setStatus(String status) {
         this.matchStatus = status;
     }
