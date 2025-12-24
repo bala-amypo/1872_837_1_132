@@ -1,8 +1,7 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
+import java.sql.Timestamp;
 
-@Entity
 public class UserProfile {
 
     private Long id;
