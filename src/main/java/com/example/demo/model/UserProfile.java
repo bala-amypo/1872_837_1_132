@@ -2,6 +2,8 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "users")
@@ -24,16 +26,16 @@ public class UserProfile extends AppUser {
         this.email = email;
     }
 
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = new Timestamp(System.currentTimeMillis());
-        this.updatedAt = this.createdAt;
-    }
+@PrePersist
+protected void onCreate() {
+    this.createdAt = LocalDateTime.now();
+    this.updatedAt = this.createdAt;
+}
 
-    @PreUpdate
-    protected void onUpdate() {
-        this.updatedAt = new Timestamp(System.currentTimeMillis());
-    }
+@PreUpdate
+protected void onUpdate() {
+    this.updatedAt = LocalDateTime.now();
+}
 
     // ---------- Getters & Setters ----------
 
@@ -61,19 +63,20 @@ public class UserProfile extends AppUser {
         this.active = active;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
+public LocalDateTime getCreatedAt() {
+    return createdAt;
+}
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
+public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+}
 
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
-    }
+public LocalDateTime getUpdatedAt() {
+    return updatedAt;
+}
 
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+public void setUpdatedAt(LocalDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+}
+
 }
