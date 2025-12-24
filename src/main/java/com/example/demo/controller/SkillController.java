@@ -1,3 +1,13 @@
+package com.example.demo.controller;
+
+import com.example.demo.model.Skill;
+import com.example.demo.service.SkillService;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/skills")
 public class SkillController {
