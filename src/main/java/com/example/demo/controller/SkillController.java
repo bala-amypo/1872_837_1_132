@@ -18,13 +18,18 @@ public class SkillController {
         this.skillService = skillService;
     }
 
-    public Skill update(Long id, Skill skill) {
-        return skillService.update(id, skill);
+    @PostMapping
+    public ResponseEntity<Skill> create(@RequestBody Skill skill) {
+        return ResponseEntity.ok(skillService.create(skill));
     }
-    
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Skill> get(@PathVariable Long id) {
+        return ResponseEntity.ok(skillService.get(id));
+    }
+
+    @GetMapping
     public ResponseEntity<List<Skill>> list() {
         return ResponseEntity.ok(skillService.getAllSkills());
     }
-
-
 }

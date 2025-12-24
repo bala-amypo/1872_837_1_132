@@ -14,8 +14,8 @@ public class Skill {
     private String category;
     private String experienceLevel;
     private String urgencyLevel;
-    private boolean active;
-    private String status;
+    private boolean active = true;
+    private String status = "ACTIVE";
 
     public Skill() {}
 
@@ -35,6 +35,7 @@ public class Skill {
         this.name = name;
     }
 
+    // REQUIRED BY TEST
     public String getCategory() {
         return category;
     }
@@ -43,6 +44,7 @@ public class Skill {
         this.category = category;
     }
 
+    // REQUIRED BY TEST
     public String getExperienceLevel() {
         return experienceLevel;
     }
@@ -51,6 +53,7 @@ public class Skill {
         this.experienceLevel = experienceLevel;
     }
 
+    // REQUIRED BY TEST
     public String getUrgencyLevel() {
         return urgencyLevel;
     }
@@ -59,6 +62,7 @@ public class Skill {
         this.urgencyLevel = urgencyLevel;
     }
 
+    // REQUIRED BY TEST
     public boolean isActive() {
         return active;
     }
@@ -67,6 +71,7 @@ public class Skill {
         this.active = active;
     }
 
+    // REQUIRED BY TEST
     public String getStatus() {
         return status;
     }

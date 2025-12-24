@@ -3,46 +3,57 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
-public class SkillRequest {
+@Table(name = "skills")
+public class Skill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String skillName;
-    private String status;
-
+    private String name;
+    private String category;
+    private String experienceLevel;
     private String urgencyLevel;
-
-    public void setId(Long id) { this.id = id; }
     private boolean active = true;
+    private String status = "ACTIVE";
 
-    @ManyToOne
-    private Skill skill;
-
-    @ManyToOne
-    private SkillCategory skillCategory;
-
-    @ManyToOne
-    private UserProfile user;
-
-
-
-
-    /* ===== REQUIRED GETTERS / SETTERS ===== */
+    public Skill() {}
 
     public Long getId() {
         return id;
     }
 
-    public String getSkillName() {
-        return skillName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setSkillName(String skillName) {
-        this.skillName = skillName;
+    public String getName() {
+        return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // REQUIRED BY TEST
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    // REQUIRED BY TEST
+    public String getExperienceLevel() {
+        return experienceLevel;
+    }
+
+    public void setExperienceLevel(String experienceLevel) {
+        this.experienceLevel = experienceLevel;
+    }
+
+    // REQUIRED BY TEST
     public String getUrgencyLevel() {
         return urgencyLevel;
     }
@@ -51,14 +62,7 @@ public class SkillRequest {
         this.urgencyLevel = urgencyLevel;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
+    // REQUIRED BY TEST
     public boolean isActive() {
         return active;
     }
@@ -67,28 +71,12 @@ public class SkillRequest {
         this.active = active;
     }
 
-    public Skill getSkill() {
-        return skill;
+    // REQUIRED BY TEST
+    public String getStatus() {
+        return status;
     }
 
-    public void setSkill(Skill skill) {
-        this.skill = skill;
+    public void setStatus(String status) {
+        this.status = status;
     }
-
-    public SkillCategory getSkillCategory() {
-        return skillCategory;
-    }
-
-    public void setSkillCategory(SkillCategory skillCategory) {
-        this.skillCategory = skillCategory;
-    }
-
-    public UserProfile getUser() {
-        return user;
-    }
-
-    public void setUser(UserProfile user) {
-        this.user = user;
-    }
-    public Object getBody() { return null; }
 }
