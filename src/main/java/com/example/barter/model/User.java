@@ -40,8 +40,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<SkillRequest> skillRequests;
 
-    @OneToMany(mappedBy = "matchedBy")
-    private List<SkillMatch> skillMatches;
+    
 
     public User() {}
 
