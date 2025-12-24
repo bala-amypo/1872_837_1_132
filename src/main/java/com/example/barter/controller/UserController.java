@@ -19,9 +19,10 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUser(@PathVariable Long id) {
-        return ResponseEntity.ok(userService.getById(id));
-    }
+public User getUser(@PathVariable Long id) {
+    return userService.getUserById(id);
+}
+
 
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")

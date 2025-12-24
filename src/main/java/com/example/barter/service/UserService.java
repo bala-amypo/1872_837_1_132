@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface UserService {
 
-    User getById(Long id);
-
     List<User> getAllUsers();
 
-    User updateRating(Long id, double rating);
+    User getUserById(Long id);
+
+    User updateRating(Long userId, double rating);
 }

@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     @Override
@@ -28,7 +28,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public User updateRating(Long userId, double rating) {
+        User user = getUserById(userId);
+        user.setRating(rating);
+        return userRepository.save(user);
     }
 }
