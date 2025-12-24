@@ -1,48 +1,38 @@
-package com.example.demo.model;
+package com.example.barter.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "skill_offers")
 public class SkillOffer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "skill_id")
-    private Skill skill;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private SkillCategory skillCategory;   // 🔥 THIS WAS MISSING
-
+    private String skillName;
     private String experienceLevel;
+    private String availability;
 
-    private boolean active = true;
+    private LocalDateTime createdAt;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserProfile user;
+    @PrePersist
+    public void onCreate() {
+        createdAt = LocalDateTime.now();
+        availability = "AVAILABLE";
+    }
 
     public SkillOffer() {}
 
+    // GETTERS
     public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public Skill getSkill() { return skill; }
-    public void setSkill(Skill skill) { this.skill = skill; }
-
+    public String getSkillName() { return skillName; }
     public String getExperienceLevel() { return experienceLevel; }
-    public void setExperienceLevel(String experienceLevel) {
-        this.experienceLevel = experienceLevel;
-    }
+    public String getAvailability() { return availability; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
 
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
-
-    public UserProfile getUser() { return user; }
-    public void setUser(UserProfile user) { this.user = user; }
-    public Object getBody() { return null; }
+    // SETTERS
+    public void setSkillName(String skillName) { this.skillName = skillName; }
+    public void setExperienceLevel(String experienceLevel) { this.experienceLevel = experienceLevel; }
+    public void setAvailability(String availability) { this.availability = availability; }
 }

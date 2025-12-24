@@ -1,15 +1,9 @@
-package com.example.demo.service;
+package com.example.barter.service;
 
-import com.example.demo.model.SkillRequest;
+import com.example.barter.model.SkillRequest;
 import java.util.List;
 
 public interface SkillRequestService {
-
-    SkillRequest create(SkillRequest request);
-
-    SkillRequest get(Long id);
-
-    List<SkillRequest> getAll();
-
-    List<SkillRequest> getByUser(Long userId);
+    SkillRequest getRequestById(Long id);
+    List<SkillRequest> getOpenRequests();
 }

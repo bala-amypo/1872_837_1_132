@@ -1,6 +1,7 @@
-package com.example.demo.model;
+package com.example.barter.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class SkillRequest {
@@ -10,32 +11,28 @@ public class SkillRequest {
     private Long id;
 
     private String skillName;
-    private String urgencyLevel;
+    private String requiredLevel;
     private String status;
-    private boolean active = true;
 
-    @ManyToOne
-    private Skill skill;
+    private LocalDateTime createdAt;
 
-    @ManyToOne
-    private UserProfile user;
+    @PrePersist
+    public void onCreate() {
+        createdAt = LocalDateTime.now();
+        status = "OPEN";
+    }
 
     public SkillRequest() {}
 
-    // REQUIRED BY TESTS
+    // GETTERS
     public Long getId() { return id; }
     public String getSkillName() { return skillName; }
-    public String getUrgencyLevel() { return urgencyLevel; }
+    public String getRequiredLevel() { return requiredLevel; }
     public String getStatus() { return status; }
-    public boolean isActive() { return active; }
-    public Skill getSkill() { return skill; }
-    public UserProfile getUser() { return user; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
 
-    public void setId(Long id) { this.id = id; }
+    // SETTERS
     public void setSkillName(String skillName) { this.skillName = skillName; }
-    public void setUrgencyLevel(String urgencyLevel) { this.urgencyLevel = urgencyLevel; }
+    public void setRequiredLevel(String requiredLevel) { this.requiredLevel = requiredLevel; }
     public void setStatus(String status) { this.status = status; }
-    public void setActive(boolean active) { this.active = active; }
-    public void setSkill(Skill skill) { this.skill = skill; }
-    public void setUser(UserProfile user) { this.user = user; }
 }
