@@ -70,7 +70,6 @@ public class UserProfile extends AppUser {
         this.createdAt = createdAt;
     }
 
-    @Override
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
