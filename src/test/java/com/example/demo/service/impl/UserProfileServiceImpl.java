@@ -8,13 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
 public class UserProfileServiceImpl implements UserProfileService {
-
-    @Override
-    public UserProfile createUser(Object dto) {
-        return new UserProfile();
-    }
 
     @Override
     public UserProfile create(UserProfile profile) {
@@ -22,14 +16,10 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
-    public UserProfile getUserById(Long id) {
-        UserProfile u = new UserProfile();
-        u.setId(id);
-        return u;
+    public UserProfile get(Long id) {
+        return new UserProfile();
     }
 
     @Override
-    public void deactivateUser(Long id) {
-        // no-op
-    }
+    public void deactivateUser(Long id) {}
 }
