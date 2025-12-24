@@ -74,8 +74,8 @@ public class Skill {
         this.active = active;
     }
 
-    // // ---------- REQUIRED FOR PORTAL TESTS ----------
-    // public Object getBody() {
-    //     return this;
-    // }
+    // ---------- REQUIRED FOR PORTAL TESTS ----------
+    public Object getBody() {
+        return this;
+    }
 }

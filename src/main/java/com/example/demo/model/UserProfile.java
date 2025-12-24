@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "users")
@@ -76,5 +77,15 @@ public class UserProfile extends AppUser {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+    import java.sql.Timestamp;
+
+    // Adapter for portal tests
+        public Timestamp getCreatedAtTimestamp() {
+            return createdAt == null ? null : Timestamp.valueOf(createdAt); 
+    }
+
+    public Timestamp getUpdatedAtTimestamp() {
+        return updatedAt == null ? null : Timestamp.valueOf(updatedAt);
     }
 }
