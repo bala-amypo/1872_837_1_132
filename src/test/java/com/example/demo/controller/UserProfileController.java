@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/profiles")
 public class UserProfileController {
@@ -18,17 +17,17 @@ public class UserProfileController {
     }
 
     @PostMapping
-    public UserProfile create(UserProfile profile) {
-        return service.create(profile);
+    public UserProfile create(@RequestBody UserProfile p) {
+        return service.create(p);
     }
 
     @GetMapping("/{id}")
     public UserProfile get(@PathVariable Long id) {
-        return service.getUserById(id);
+        return service.get(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void deactivate(@PathVariable Long id) {
+    @PostMapping("/{id}/deactivate")
+    public void deactivateUser(@PathVariable Long id) {
         service.deactivateUser(id);
     }
 }
