@@ -1,15 +1,14 @@
 package com.example.barter.service;
 
 import com.example.barter.model.UserProfile;
+
 import java.util.List;
 
 public interface UserProfileService {
 
-    UserProfile createUser(UserProfile user);
+    UserProfile createProfile(UserProfile profile);
 
-    UserProfile getUser(Long id);
+    UserProfile getProfileById(Long id);
 
-    List<UserProfile> getAllUsers();
-
-    void deactivateUser(Long id);
+    List<UserProfile> getAllProfiles();
 }
