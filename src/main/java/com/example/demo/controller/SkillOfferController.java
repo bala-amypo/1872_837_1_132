@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/skill-offers")
+@RequestMapping("/api/offers")
 public class SkillOfferController {
 
     private final SkillOfferService skillOfferService;
@@ -16,18 +16,21 @@ public class SkillOfferController {
         this.skillOfferService = skillOfferService;
     }
 
+    // CREATE
     @PostMapping
     public SkillOffer create(@RequestBody SkillOffer offer) {
-        return skillOfferService.create(offer);
+        return skillOfferService.createOffer(offer);   // ✅ FIXED
     }
 
+    // READ BY ID
     @GetMapping("/{id}")
     public SkillOffer get(@PathVariable Long id) {
-        return skillOfferService.get(id);
+        return skillOfferService.getOfferById(id);     // ✅ FIXED
     }
 
+    // READ ALL
     @GetMapping
     public List<SkillOffer> getAll() {
-        return skillOfferService.getAll();
+        return skillOfferService.getAll();              // ✅ CONSISTENT
     }
 }
