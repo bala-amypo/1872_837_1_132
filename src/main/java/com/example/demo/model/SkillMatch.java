@@ -62,4 +62,8 @@ public class SkillMatch {
     public void setStatus(String status) {
         this.status = status;
     }
+    public String getMatchStatus() {
+    return status;
+}
+
 }
