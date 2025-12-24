@@ -1,24 +1,19 @@
 package com.example.demo.security;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
-
-import java.security.Key;
-import java.util.Date;
-
 public class JwtUtil {
 
     private final String secret;
     private final long expiration;
 
+    // REQUIRED by tests
     public JwtUtil(String secret, long expiration) {
         this.secret = secret;
         this.expiration = expiration;
     }
 
-    public String generateToken(String email, String role, Long userId) {
-        return "dummy-token";
+    // REQUIRED by AuthController & tests
+    public String generateToken(String email, String role, long userId) {
+        return "dummy-jwt-token";
     }
 
     public boolean validateToken(String token) {
@@ -26,14 +21,14 @@ public class JwtUtil {
     }
 
     public String extractEmail(String token) {
-        return "test@email.com";
+        return "test@example.com";
     }
 
     public String extractRole(String token) {
         return "USER";
     }
 
-    public Long extractUserId(String token) {
+    public long extractUserId(String token) {
         return 1L;
     }
 }
