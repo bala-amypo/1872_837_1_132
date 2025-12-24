@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.SkillRequest;
+import java.util.List;   // ✅ ADD THIS LINE
 
 public interface SkillRequestService {
 
