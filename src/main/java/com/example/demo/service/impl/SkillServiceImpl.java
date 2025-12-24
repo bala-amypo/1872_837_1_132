@@ -10,7 +10,7 @@ public class SkillServiceImpl implements SkillService {
 
     @Override
     public List<Skill> getAllSkills() {
-        return Collections.emptyList();
+        return new ArrayList<>();
     }
 
     @Override

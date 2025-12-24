@@ -5,25 +5,21 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "users")
-public class UserProfile {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class UserProfile extends AppUser {
 
     private String username;
     private String email;
     private boolean active = true;
 
-    // 🔥 ADD THESE BACK
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public UserProfile() {}
+    public UserProfile() {
+    }
 
-    // 🔥 constructor used by service
+    // Constructor used by services/tests
     public UserProfile(Long id, String username, String email) {
-        this.id = id;
+        this.setId(id);          // inherited from AppUser
         this.username = username;
         this.email = email;
     }
@@ -39,22 +35,45 @@ public class UserProfile {
         this.updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
-    // getters & setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    // ---------- Getters & Setters ----------
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
+    public String getUsername() {
+        return username;
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
-    public Object getBody() { return null; }
-    public Timestamp getCreatedAt() { return createdAt; }
-    public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
+    public String getEmail() {
+        return email;
+    }
 
-    public Timestamp getUpdatedAt() { return updatedAt; }
-    public void setUpdatedAt(Timestamp updatedAt) { this.updatedAt = updatedAt; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }
