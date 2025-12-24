@@ -16,7 +16,7 @@ public class SkillRequest {
 
     // 🔥 ADD THIS FIELD
     private String status = "OPEN";
-
+    public void setId(Long id) { this.id = id; }
     private boolean active = true;
 
     @ManyToOne
