@@ -8,20 +8,27 @@ import java.util.List;
 import java.util.ArrayList;
 
 
+@Service
 public class SkillServiceImpl implements SkillService {
+
+    private final SkillRepository skillRepository;
+
+    public SkillServiceImpl(SkillRepository skillRepository) {
+        this.skillRepository = skillRepository;
+    }
+
+    @Override
+    public Skill create(Skill skill) {
+        return skillRepository.save(skill);
+    }
+
+    @Override
+    public Skill get(Long id) {
+        return skillRepository.findById(id).orElse(null);
+    }
 
     @Override
     public List<Skill> getAllSkills() {
-        return new ArrayList<>();
-    }
-
-    @Override
-        public Skill updateSkill(Long id, Object skill) {
-            return new Skill();
-    }
-
-    @Override
-        public Skill update(Long id, Skill skill) {
-            return skill;   
+        return skillRepository.findAll();
     }
 }

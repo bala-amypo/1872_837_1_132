@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface SkillService {
 
+    Skill create(Skill skill);
+
+    Skill get(Long id);
+
     List<Skill> getAllSkills();
-
-    Skill updateSkill(Long id, Object skill);
-
-    Skill update(Long id, Skill skill);
 }

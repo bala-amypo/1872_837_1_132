@@ -21,6 +21,12 @@ public class UserProfile {
     public UserProfile() {}
 
     // ===== REQUIRED GETTERS / SETTERS =====
+    public UserProfile(Long id, String username, String email) {
+    this.id = id;
+    this.username = username;
+    this.email = email;
+    this.active = true;
+    }
 
     public Long getId() {
         return id;
