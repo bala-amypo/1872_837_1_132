@@ -10,6 +10,7 @@ public class SkillRequest {
     private Long id;
 
     private String skillName;
+    private String status;
 
     private String urgencyLevel;
 

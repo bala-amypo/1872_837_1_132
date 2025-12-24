@@ -12,4 +12,14 @@ public class SkillServiceImpl implements SkillService {
     public List<Skill> getAllSkills() {
         return Collections.emptyList();
     }
+    @Override
+public Skill updateSkill(Long id, Object skill) {
+    return new Skill();
+}
+
+@Override
+public Skill update(Long id, Skill skill) {
+    return skill;
+}
+
 }
