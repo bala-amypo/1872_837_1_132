@@ -24,8 +24,9 @@ public class SkillController {
     public Skill update(Long id, Skill skill) {
         return skillService.update(id, skill);
     }
-    
+
     public ResponseEntity<List<Skill>> list() {
         return ResponseEntity.ok(skillService.getAllSkills());
     }
+
 }
