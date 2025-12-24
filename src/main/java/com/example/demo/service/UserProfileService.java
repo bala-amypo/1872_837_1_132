@@ -5,9 +5,11 @@ import java.util.List;
 
 public interface UserProfileService {
 
-    UserProfile create(UserProfile user);
+    UserProfile createUser(UserProfile user);
 
-    UserProfile get(Long id);
+    UserProfile getUser(Long id);
 
-    List<UserProfile> getAll();
+    List<UserProfile> getAllUsers();
+
+    void deactivateUser(Long id);
 }
