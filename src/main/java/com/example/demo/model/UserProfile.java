@@ -62,7 +62,7 @@ public class UserProfile extends AppUser {
         this.active = active;
     }
 
-    @Override
+    // ⚠️ DO NOT use @Override unless AppUser defines this EXACT method
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -78,11 +78,11 @@ public class UserProfile extends AppUser {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
-    import java.sql.Timestamp;
 
-    // Adapter for portal tests
-        public Timestamp getCreatedAtTimestamp() {
-            return createdAt == null ? null : Timestamp.valueOf(createdAt); 
+    // ----------- Adapter methods (FOR PORTAL TESTS) -----------
+
+    public Timestamp getCreatedAtTimestamp() {
+        return createdAt == null ? null : Timestamp.valueOf(createdAt);
     }
 
     public Timestamp getUpdatedAtTimestamp() {
