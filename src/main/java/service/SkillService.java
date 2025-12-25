@@ -3,28 +3,22 @@ package com.example.demo.service;
 import com.example.demo.model.Skill;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class SkillService {
 
-    public Skill create(Skill skill) {
-        return skill;
+    public Skill createSkill(Object obj) {
+        return (Skill) obj;
     }
 
-    public Skill get(Long id) {
-        Skill s = new Skill();
+    public Skill updateSkill(long id, Object obj) {
+        Skill s = (Skill) obj;
         s.setId(id);
-        s.setName("Java");
         return s;
     }
 
-    public Skill update(Long id, Skill skill) {
-        skill.setId(id);
-        return skill;
-    }
-
-    public List<Skill> getAll() {
-        return List.of(new Skill());
+    public Skill get(long id) {
+        Skill s = new Skill();
+        s.setId(id);
+        return s;
     }
 }

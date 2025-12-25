@@ -3,20 +3,18 @@ package com.example.demo.service;
 import com.example.demo.model.UserProfile;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserProfileService {
 
-    public UserProfile create(UserProfile user) {
-        return user;
+    public UserProfile createUser(Object obj) {
+        return (UserProfile) obj;
     }
 
-    public UserProfile get(Long id) {
-        return new UserProfile(id, "testuser", "test@email.com");
+    public UserProfile getUserById(long id) {
+        return new UserProfile(id, "user", "email@test.com");
     }
 
-    public List<UserProfile> getAll() {
-        return List.of(new UserProfile(1L, "user", "email"));
+    public UserProfile getUsersById(long id) {
+        return getUserById(id);
     }
 }

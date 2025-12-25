@@ -8,11 +8,17 @@ import java.util.List;
 @Service
 public class SkillRequestService {
 
-    public SkillRequest create(SkillRequest request) {
-        return request;
+    public SkillRequest createRequest(Object obj) {
+        return (SkillRequest) obj;
     }
 
-    public List<SkillRequest> getAll() {
+    public SkillRequest getRequestById(long id) {
+        SkillRequest r = new SkillRequest();
+        r.setId(id);
+        return r;
+    }
+
+    public List<SkillRequest> getRequestsByUser(long userId) {
         return List.of(new SkillRequest());
     }
 }
