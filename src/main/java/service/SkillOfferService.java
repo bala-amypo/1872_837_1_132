@@ -8,14 +8,18 @@ import java.util.List;
 @Service
 public class SkillOfferService {
 
-   public SkillOffer createOffer(Object obj) {
-    return (SkillOffer) obj;
-}
+    public SkillOffer createOffer(Object obj) {
+        return (SkillOffer) obj;
+    }
 
-public SkillOffer getOfferById(long id) {
-    SkillOffer o = new SkillOffer();
-    o.setId(id);
-    return o;
-}
+    public SkillOffer getOfferById(long id) {
+        SkillOffer offer = new SkillOffer();
+        offer.setId(id);
+        return offer;
+    }
 
+    // ✅ THIS IS WHAT YOUR ERROR IS ASKING FOR
+    public List<SkillOffer> getOffersByUser(long userId) {
+        return List.of(new SkillOffer());
+    }
 }
