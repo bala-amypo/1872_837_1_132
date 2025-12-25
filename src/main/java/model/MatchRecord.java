@@ -9,25 +9,55 @@ public class MatchRecord {
     private Skill skillOfferedByA;
     private Skill skillOfferedByB;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public UserProfile getUserA() { return userA; }
-    public void setUserA(UserProfile userA) { this.userA = userA; }
+    public String getStatus() {
+        return status;
+    }
 
-    public UserProfile getUserB() { return userB; }
-    public void setUserB(UserProfile userB) { this.userB = userB; }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-    public Skill getSkillOfferedByA() { return skillOfferedByA; }
-    public void setSkillOfferedByA(Skill skill) { this.skillOfferedByA = skill; }
+    public UserProfile getUserA() {
+        return userA;
+    }
 
-    public Skill getSkillOfferedByB() { return skillOfferedByB; }
-    public void setSkillOfferedByB(Skill skill) { this.skillOfferedByB = skill; }
+    public void setUserA(UserProfile userA) {
+        this.userA = userA;
+    }
 
-    // ✅ REQUIRED BY TEST
+    public UserProfile getUserB() {
+        return userB;
+    }
+
+    public void setUserB(UserProfile userB) {
+        this.userB = userB;
+    }
+
+    public Skill getSkillOfferedByA() {
+        return skillOfferedByA;
+    }
+
+    public void setSkillOfferedByA(Skill skillOfferedByA) {
+        this.skillOfferedByA = skillOfferedByA;
+    }
+
+    public Skill getSkillOfferedByB() {
+        return skillOfferedByB;
+    }
+
+    public void setSkillOfferedByB(Skill skillOfferedByB) {
+        this.skillOfferedByB = skillOfferedByB;
+    }
+
+    // REQUIRED BY TEST
     public Object getBody() {
         return this;
     }

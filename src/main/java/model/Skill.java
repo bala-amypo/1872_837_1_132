@@ -39,6 +39,7 @@ public class Skill {
         this.active = active;
     }
 
+    // REQUIRED BY TEST
     public Object getBody() {
         return this;
     }

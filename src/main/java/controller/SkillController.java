@@ -30,9 +30,14 @@ public class SkillController {
     public Skill update(@PathVariable Long id, @RequestBody Skill skill) {
         return service.updateSkill(id, skill);
     }
-    @GetMapping("/list")
-public List<Skill> list() {
-    return service.getAllSkills();
+@GetMapping("/list")
+public Object list() {
+    return new Object() {
+        public Object getBody() {
+            return service.getAllSkills();
+        }
+    };
 }
+
 
 }
