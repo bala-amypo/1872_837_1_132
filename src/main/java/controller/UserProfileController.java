@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.UserProfile;
 import com.example.demo.service.UserProfileService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,18 +15,22 @@ public class UserProfileController {
         this.service = service;
     }
 
+    // ✅ MUST return ResponseEntity<UserProfile>
     @PostMapping
-    public UserProfile create(@RequestBody UserProfile user) {
-        return service.createUser(user);
+    public ResponseEntity<UserProfile> create(@RequestBody UserProfile user) {
+        return ResponseEntity.ok(service.createUser(user));
     }
 
+    // ✅ MUST return ResponseEntity<UserProfile>
     @GetMapping("/{id}")
-    public UserProfile get(@PathVariable long id) {
-        return service.getUserById(id);
+    public ResponseEntity<UserProfile> get(@PathVariable long id) {
+        return ResponseEntity.ok(service.getUserById(id));
     }
-    @PutMapping("/deactivate/{id}")
-public void deactivate(@PathVariable long id) {
-    service.deactivateUser(id);
-}
 
+    // ✅ MUST return ResponseEntity (not void)
+    @PutMapping("/deactivate/{id}")
+    public ResponseEntity<Void> deactivate(@PathVariable long id) {
+        service.deactivateUser(id);
+        return ResponseEntity.ok().build();
+    }
 }
