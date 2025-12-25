@@ -20,5 +20,10 @@ public class UserProfile extends AppUser {
     public Object getBody() {
     return this;
 }
+@Override
+public String getUsername() {
+    return super.getUsername();
+}
+
 
 }

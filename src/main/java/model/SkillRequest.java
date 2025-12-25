@@ -9,6 +9,9 @@ public class SkillRequest {
 public void setUrgencyLevel(String urgencyLevel) {
     this.urgencyLevel = urgencyLevel;
 }
+public String getUrgencyLevel() {
+    return urgencyLevel;
+}
 
 public Object getBody() {
     return this;

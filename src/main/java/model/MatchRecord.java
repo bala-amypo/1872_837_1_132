@@ -1,22 +1,24 @@
-package com.example.demo.model;
+private UserProfile userA;
+private UserProfile userB;
+private Skill skillOfferedByA;
+private Skill skillOfferedByB;
 
-public class MatchRecord {
-    private Long id;
-    private SkillOffer offer;
-    private SkillRequest request;
-    private String status;
-
-public void setStatus(String status) {
-    this.status = status;
+public void setUserA(UserProfile userA) {
+    this.userA = userA;
 }
 
+public void setUserB(UserProfile userB) {
+    this.userB = userB;
+}
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+public void setSkillOfferedByA(Skill skill) {
+    this.skillOfferedByA = skill;
+}
 
-    public SkillOffer getOffer() { return offer; }
-    public void setOffer(SkillOffer offer) { this.offer = offer; }
+public void setSkillOfferedByB(Skill skill) {
+    this.skillOfferedByB = skill;
+}
 
-    public SkillRequest getRequest() { return request; }
-    public void setRequest(SkillRequest request) { this.request = request; }
+public UserProfile getUserA() {
+    return userA;
 }

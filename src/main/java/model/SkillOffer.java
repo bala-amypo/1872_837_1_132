@@ -1,16 +1,18 @@
-package com.example.demo.model;
+private String experienceLevel;
+private boolean active;
 
-public class SkillOffer {
-    private Long id;
-    private UserProfile user;
-    private Skill skill;
+public String getExperienceLevel() {
+    return experienceLevel;
+}
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+public void setExperienceLevel(String experienceLevel) {
+    this.experienceLevel = experienceLevel;
+}
 
-    public UserProfile getUser() { return user; }
-    public void setUser(UserProfile user) { this.user = user; }
+public boolean isActive() {
+    return active;
+}
 
-    public Skill getSkill() { return skill; }
-    public void setSkill(Skill skill) { this.skill = skill; }
+public void setActive(boolean active) {
+    this.active = active;
 }
