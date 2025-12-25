@@ -21,4 +21,10 @@ public class SkillService {
         s.setId(id);
         return s;
     }
+    import java.util.List;
+
+public List<Skill> getAllSkills() {
+    return List.of(new Skill());
+}
+
 }

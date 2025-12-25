@@ -25,4 +25,9 @@ public class MatchRecordController {
     public List<MatchRecord> getMatches(@PathVariable long userId) {
         return matchmakingService.getMatchesForUser(userId);
     }
+    @PostMapping("/generate/{id}")
+public MatchRecord generate(@PathVariable long id) {
+    return matchmakingService.generateMatch(id);
+}
+
 }

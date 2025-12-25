@@ -20,4 +20,14 @@ public class SkillOfferController {
     public List<SkillOffer> getOffersByUser(@PathVariable long userId) {
         return service.getOffersByUser(userId);
     }
+    @PostMapping
+public SkillOffer create(@RequestBody SkillOffer offer) {
+    return service.createOffer(offer);
+}
+
+@GetMapping("/{id}")
+public SkillOffer get(@PathVariable long id) {
+    return service.getOfferById(id);
+}
+
 }

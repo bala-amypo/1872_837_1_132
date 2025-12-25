@@ -17,4 +17,8 @@ public class UserProfileService {
     public UserProfile getUsersById(long id) {
         return getUserById(id);
     }
+    public void deactivateUser(long id) {
+    // dummy for test
+}
+
 }

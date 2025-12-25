@@ -13,4 +13,12 @@ public class JwtUtil {
     public Long extractUserId(String token) {
         return Long.parseLong(token.split(":")[2]);
     }
+    public boolean validateToken(String token) {
+    return token != null && token.contains(":");
+}
+
+public String extractEmail(String token) {
+    return token.split(":")[0];
+}
+
 }
