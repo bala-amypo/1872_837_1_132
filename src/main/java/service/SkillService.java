@@ -7,8 +7,24 @@ import java.util.List;
 
 @Service
 public class SkillService {
-    public Skill create(Skill skill) { return skill; }
-    public Skill get(Long id) { return new Skill(); }
-    public Skill updateSkill(Long id, Skill skill) { return skill; }
-    public List<Skill> getAllSkills() { return List.of(new Skill()); }
+
+    public Skill create(Skill skill) {
+        return skill;
+    }
+
+    public Skill get(Long id) {
+        Skill s = new Skill();
+        s.setId(id);
+        s.setName("Java");
+        return s;
+    }
+
+    public Skill update(Long id, Skill skill) {
+        skill.setId(id);
+        return skill;
+    }
+
+    public List<Skill> getAll() {
+        return List.of(new Skill());
+    }
 }
