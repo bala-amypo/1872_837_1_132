@@ -4,8 +4,6 @@ import com.example.demo.model.Skill;
 import com.example.demo.service.SkillService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/skills")
 public class SkillController {
@@ -18,7 +16,7 @@ public class SkillController {
 
     @PostMapping
     public Skill create(@RequestBody Skill skill) {
-        return service.create(skill);
+        return service.createSkill(skill);
     }
 
     @GetMapping("/{id}")
@@ -28,11 +26,6 @@ public class SkillController {
 
     @PutMapping("/{id}")
     public Skill update(@PathVariable Long id, @RequestBody Skill skill) {
-        return service.update(id, skill);
-    }
-
-    @GetMapping
-    public List<Skill> getAll() {
-        return service.getAll();
+        return service.updateSkill(id, skill);
     }
 }

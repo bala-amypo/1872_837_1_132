@@ -4,8 +4,6 @@ import com.example.demo.model.UserProfile;
 import com.example.demo.service.UserProfileService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/users")
 public class UserProfileController {
@@ -18,16 +16,11 @@ public class UserProfileController {
 
     @PostMapping
     public UserProfile create(@RequestBody UserProfile user) {
-        return service.create(user);
+        return service.createUser(user);
     }
 
     @GetMapping("/{id}")
-    public UserProfile get(@PathVariable Long id) {
-        return service.get(id);
-    }
-
-    @GetMapping
-    public List<UserProfile> getAll() {
-        return service.getAll();
+    public UserProfile get(@PathVariable long id) {
+        return service.getUserById(id);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.MatchRecord;
-import com.example.demo.service.MatchRecordService;
+import com.example.demo.service.MatchmakingService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,19 +10,19 @@ import java.util.List;
 @RequestMapping("/matches")
 public class MatchRecordController {
 
-    private final MatchRecordService service;
+    private final MatchmakingService matchmakingService;
 
-    public MatchRecordController(MatchRecordService service) {
-        this.service = service;
+    public MatchRecordController(MatchmakingService matchmakingService) {
+        this.matchmakingService = matchmakingService;
     }
 
-    @PostMapping
-    public MatchRecord create(@RequestBody MatchRecord match) {
-        return service.create(match);
+    @PostMapping("/{requestId}")
+    public MatchRecord generateMatch(@PathVariable long requestId) {
+        return matchmakingService.generateMatch(requestId);
     }
 
-    @GetMapping
-    public List<MatchRecord> getAll() {
-        return service.getAll();
+    @GetMapping("/user/{userId}")
+    public List<MatchRecord> getMatches(@PathVariable long userId) {
+        return matchmakingService.getMatchesForUser(userId);
     }
 }

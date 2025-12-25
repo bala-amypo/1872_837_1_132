@@ -16,13 +16,8 @@ public class SkillOfferController {
         this.service = service;
     }
 
-    @PostMapping
-    public SkillOffer create(@RequestBody SkillOffer offer) {
-        return service.create(offer);
-    }
-
-    @GetMapping
-    public List<SkillOffer> getAll() {
-        return service.getAll();
+    @GetMapping("/{userId}")
+    public List<SkillOffer> getOffersByUser(@PathVariable long userId) {
+        return service.getOffersByUser(userId);
     }
 }

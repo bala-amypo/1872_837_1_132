@@ -11,9 +11,14 @@ public class AuthController {
 
     private final JwtUtil jwtUtil = new JwtUtil();
 
-    @PostMapping("/login")
-    public LoginResponse login(@RequestBody LoginRequest request) {
-        String token = jwtUtil.generateToken(request.getUsername());
-        return new LoginResponse(token);
-    }
+@PostMapping("/login")
+public LoginResponse login(@RequestBody LoginRequest request) {
+    String token = jwtUtil.generateToken(
+        request.getUsername(),
+        "USER",
+        1L
+    );
+    return new LoginResponse(token);
+}
+
 }

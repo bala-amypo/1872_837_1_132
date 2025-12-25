@@ -18,11 +18,16 @@ public class SkillRequestController {
 
     @PostMapping
     public SkillRequest create(@RequestBody SkillRequest request) {
-        return service.create(request);
+        return service.createRequest(request);
     }
 
-    @GetMapping
-    public List<SkillRequest> getAll() {
-        return service.getAll();
+    @GetMapping("/{id}")
+    public SkillRequest get(@PathVariable long id) {
+        return service.getRequestById(id);
+    }
+
+    @GetMapping("/user/{userId}")
+    public List<SkillRequest> getByUser(@PathVariable long userId) {
+        return service.getRequestsByUser(userId);
     }
 }
