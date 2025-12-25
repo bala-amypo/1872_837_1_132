@@ -23,4 +23,9 @@ public class UserProfileController {
     public UserProfile get(@PathVariable long id) {
         return service.getUserById(id);
     }
+    @PutMapping("/deactivate/{id}")
+public void deactivate(@PathVariable long id) {
+    service.deactivateUser(id);
+}
+
 }
