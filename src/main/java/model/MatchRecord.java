@@ -58,7 +58,7 @@ public class MatchRecord {
     }
 
     // REQUIRED BY TEST
-    public Object getBody() {
+    public MatchRecord getBody() {
         return this;
     }
 }

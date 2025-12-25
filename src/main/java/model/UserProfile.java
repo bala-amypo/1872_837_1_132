@@ -36,7 +36,7 @@ public class UserProfile extends AppUser {
     }
 
     // REQUIRED BY TEST
-    public Object getBody() {
+    public UserProfile getBody() {
         return this;
     }
 }
