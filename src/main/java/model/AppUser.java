@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class AppUser {
 
@@ -34,12 +35,17 @@ public class AppUser {
         this.role = role;
     }
 
-    // 🔥 IMPORTANT: Timestamp, NOT LocalDateTime
+    // Primary (used internally)
     public Timestamp getCreatedAt() {
         return createdAt;
     }
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    // 🔥 REQUIRED BY TEST (LocalDateTime → Timestamp)
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = Timestamp.valueOf(createdAt);
     }
 }
