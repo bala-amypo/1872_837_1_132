@@ -4,6 +4,15 @@ public class SkillRequest {
     private Long id;
     private UserProfile user;
     private Skill skill;
+    private String urgencyLevel;
+
+public void setUrgencyLevel(String urgencyLevel) {
+    this.urgencyLevel = urgencyLevel;
+}
+
+public Object getBody() {
+    return this;
+}
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

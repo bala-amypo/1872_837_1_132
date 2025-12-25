@@ -17,4 +17,8 @@ public class UserProfile extends AppUser {
 
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
+    public Object getBody() {
+    return this;
+}
+
 }

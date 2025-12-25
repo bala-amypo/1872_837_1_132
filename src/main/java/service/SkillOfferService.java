@@ -8,11 +8,7 @@ import java.util.List;
 @Service
 public class SkillOfferService {
 
-    public SkillOffer create(SkillOffer offer) {
-        return offer;
-    }
-
-    public List<SkillOffer> getAll() {
+    public List<SkillOffer> getOffersByUser(long userId) {
         return List.of(new SkillOffer());
     }
 }

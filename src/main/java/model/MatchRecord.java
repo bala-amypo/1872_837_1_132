@@ -4,6 +4,12 @@ public class MatchRecord {
     private Long id;
     private SkillOffer offer;
     private SkillRequest request;
+    private String status;
+
+public void setStatus(String status) {
+    this.status = status;
+}
+
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
