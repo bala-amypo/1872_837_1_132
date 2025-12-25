@@ -11,14 +11,13 @@ public class UserProfileService {
     }
 
     public UserProfile getUserById(long id) {
-        return new UserProfile(id, "user", "email@test.com");
+        UserProfile u = new UserProfile();
+        u.setId(id);
+        u.setUsername("user");
+        return u;
     }
 
-    public UserProfile getUsersById(long id) {
-        return getUserById(id);
-    }
     public void deactivateUser(long id) {
-    // dummy for test
-}
-
+        // dummy
+    }
 }
