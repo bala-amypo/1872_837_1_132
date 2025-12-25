@@ -13,10 +13,16 @@ public class UserService {
     }
 
     public UserProfile getUser(Long id) {
-        return new UserProfile(id, "testuser", "test@email.com");
+        UserProfile u = new UserProfile();
+        u.setId(id);
+        u.setUsername("user");
+        return u;
     }
 
     public List<UserProfile> getAllUsers() {
-        return List.of(new UserProfile(1L, "user", "email"));
+        UserProfile u = new UserProfile();
+        u.setId(1L);
+        u.setUsername("user");
+        return List.of(u);
     }
 }
