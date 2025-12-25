@@ -49,7 +49,7 @@ public class SkillOffer {
     }
 
     // REQUIRED BY TEST
-    public Object getBody() {
+    public SkillOffer getBody() {
         return this;
     }
 }

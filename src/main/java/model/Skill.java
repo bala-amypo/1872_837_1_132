@@ -40,7 +40,7 @@ public class Skill {
     }
 
     // REQUIRED BY TEST
-    public Object getBody() {
+    public Skill getBody() {
         return this;
     }
 }
