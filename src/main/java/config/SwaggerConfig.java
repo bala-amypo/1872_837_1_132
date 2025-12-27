@@ -14,7 +14,7 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI openAPI() {
         return new OpenAPI()
-                .info(new Info().title("Inventory Balancer API").version("1.0"))
+                .info(new Info().title("Skill Barter Matchmaking Platform").version("1.0"))
                 // FIX: Use HTTPS to prevent "Mixed Content" blocking
                 .servers(List.of(new Server().url("https://9199.408procr.amypo.ai/"))) 
                 .addSecurityItem(new SecurityRequirement().addList("Bearer Auth"))
