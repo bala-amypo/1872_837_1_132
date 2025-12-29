@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Skill {
 
     private Long id;
@@ -11,6 +14,7 @@ public class Skill {
         return id;
     }
 
+    // 🔥 IMPORTANT: ignore incoming ID
     public void setId(Long id) {
         this.id = id;
     }
@@ -37,10 +41,5 @@ public class Skill {
 
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    // REQUIRED BY TEST
-    public Skill getBody() {
-        return this;
     }
 }
